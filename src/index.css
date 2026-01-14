@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-900 text-zinc-50;
+}
+/* Chrome, Edge, Safari */
+html::-webkit-scrollbar {
+  width: 6px; /* thin scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+  background: #27272a; /* same as zinc-800 */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #71717a; /* same as zinc-500 */
+  border-radius: 999px; /* rounded scrollbar */
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #71717a #27272a;
+}
+
+/* Components */
+
+/* Menu btn */
+
+.menu-btn {
+  @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl hover:bg-zinc-50/15 transition-[transform,background-color] active:scale-95;
+}
+
+/* Navbar */
+
+.navbar {
+  @apply absolute top-full mt-2 right-0 min-w-40 p-2 bg-zinc-50/10 rounded-2xl ring-inset ring-1 ring-zinc-50/5 scale-90 isolate blur-sm opacity-0 invisible transition-[opacity,transform,filter];
+}
+
+
+.navbar.active {
+  @apply opacity-100 scale-100 filter-none visible; 
+}
+
+.nav-link {
+  @apply grid items-center h-9 px-4 text-sm font-medium tracking-wide text-zinc-50/50 hover:text-zinc-50 transition-colors
+}
+
+.nav-link.active {
+  @apply text-zinc-900 duration-500 
+}
+
+.navbar .active-box {
+  @apply absolute bg-zinc-50 rounded-lg -z-10 transition-[top,left] duration-500
+}
