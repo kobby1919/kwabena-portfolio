@@ -11,7 +11,7 @@ function FormInput({
 }) {
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="label">
+      <label htmlFor={name} className="label reveal-up">
         {label}
       </label>
 
@@ -22,7 +22,7 @@ function FormInput({
         placeholder={placeholder}
         autoComplete={autoComplete}
         required={required}
-        className={`text-field ${className}`}
+        className={`text-field reveal-up ${className}`}
       />
     </div>
   );
