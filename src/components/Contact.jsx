@@ -101,28 +101,27 @@ function Contact() {
             ))}
           </div>
         </div>
-        <form action="" method="POST" className="xl:pl-10 2xl:pl-20">
+        <form action="https://forminit.com/f/nvjdlyeh3ah" method="POST" className="xl:pl-10 2xl:pl-20">
           <div className="md:grid md:items-center md:grid-cols-2 md:gap-2">
-        
             <FormInput
               label="Name"
-              name="name"
+              name="fi-sender-fullName"
               placeholder="Kwabena Junior"
               autoComplete="name"
             />
-         
+
             <FormInput
               label="Email"
-              name="email"
+              name="fi-sender-email"
               type="email"
               placeholder="samuelassanjnr@gmail.com"
               autoComplete="email"
             />
           </div>
-   
+
           <FormTextarea
             label="Message"
-            name="message"
+            name="fi-text-message"
             placeholder="Hi"
             required
           />
