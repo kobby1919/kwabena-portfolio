@@ -1,5 +1,6 @@
 import FormInput from "./FormInput";
 import FormTextarea from "./FormTextarea";
+import ParticlesBackground from "./ParticlesBackground";
 
 const socialLinks = [
   {
