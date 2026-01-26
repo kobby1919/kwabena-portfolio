@@ -1,45 +1,51 @@
+import { useEffect, useState } from "react";
 import { words } from "../constants";
 import { ButtonPrimary, ButtonOutline } from "./Button";
 import ParticlesBackground from "./ParticlesBackground";
 import { motion } from "framer-motion";
-
 const container = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
 
 const fadeInImage = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.96 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.9, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
+
 function Hero() {
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
   return (
     <motion.section
       id="home"
       className="pt-28 lg:pt-36"
       variants={container}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <ParticlesBackground />
+      {!isMobile && <ParticlesBackground />}
+
 
       <div className="container lg:grid items-center lg:grid-cols-2 lg:gap-10 relative z-10">
         {/* LEFT COLUMN */}
@@ -96,18 +102,22 @@ function Hero() {
 
           {/* BUTTONS */}
           <motion.div variants={fadeUp} className="flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-              <ButtonPrimary label="Download CV" icon="download" />
-            </motion.div>
+            <ButtonPrimary
+  label="Download CV"
+  icon="download"
+  classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
+/>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+
+            
               <ButtonOutline
                 href="#about"
                 label="Scroll down"
                 icon="arrow_downward"
+                classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
                 
               />
-            </motion.div>
+            
           </motion.div>
         </motion.div>
 
@@ -116,7 +126,7 @@ function Hero() {
           className="hidden lg:block relative"
           variants={fadeInImage}
         >
-          <div className="absolute -inset-4 bg-sky-400/20 blur-3xl rounded-full"></div>
+          <div className="absolute -inset-4 bg-sky-400/20 blur-2xl opacity-60 rounded-full"></div>
 
           <figure className="relative w-full max-w-[480px] ml-auto rounded-[50px] overflow-hidden">
             <img
