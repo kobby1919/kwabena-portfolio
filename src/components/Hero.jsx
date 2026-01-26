@@ -30,19 +30,6 @@ const fadeInImage = {
 
 
 function Hero() {
-const [isMobile, setIsMobile] = useState(false);
-
-useEffect(() => {
-  const checkMobile = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  checkMobile(); // run on mount
-  window.addEventListener("resize", checkMobile);
-
-  return () => window.removeEventListener("resize", checkMobile);
-}, []);
-
   return (
     <motion.section
       id="home"
@@ -52,7 +39,10 @@ useEffect(() => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      {!isMobile && <ParticlesBackground />}
+     <div className="hidden md:block">
+  <ParticlesBackground />
+</div>
+
 
 
       <div className="container lg:grid items-center lg:grid-cols-2 lg:gap-10 relative z-10">

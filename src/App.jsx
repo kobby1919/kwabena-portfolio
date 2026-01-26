@@ -42,7 +42,6 @@ function App() {
 
   return (
     <ReactLenis root>
-      <ParticlesBackground />
       <Header />
       <main>
         <Hero />
