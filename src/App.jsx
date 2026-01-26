@@ -14,6 +14,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { element } from "prop-types";
 import ParticlesBackground from "./components/ParticlesBackground";
+import CustomCursor from "./components/CustomCursor";
 
 //Register gsap plugins
 gsap.registerPlugin(useGSAP, ScrollTrigger);

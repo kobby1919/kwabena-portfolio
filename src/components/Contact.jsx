@@ -77,60 +77,136 @@ const socialLinks = [
   },
 ];
 
+// function Contact() {
+//   return (
+//     <section id="contact" className="section">
+//       <div className="container lg:grid lg:grid-cols-2 lg:items-stretch">
+//         <div className="mb-12 lg:mb-0 lg:flex lg:flex-col">
+//           <h2 className="headline-2 lg:max-w-[12ch] reveal-up">
+//             Contact me for collaboration
+//           </h2>
+//           <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch] reveal-up">
+//             Reach out today to discuss your project needs and start
+//             collaborating on something amazing!
+//           </p>
+//           <div className="flex items-center gap-2 mt-auto">
+//             {socialLinks.map(({ href, icon, alt }, key) => (
+//               <a
+//                 key={key}
+//                 href={href}
+//                 target="_blank"
+//                 className="w-12 h-12 grid place-items-center ring-inset ring-2 ring-zinc-50/5 rounded-lg transition-[background-color,color] hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 reveal-up"
+//               >
+//                 {icon}
+//               </a>
+//             ))}
+//           </div>
+//         </div>
+//         <form action="https://forminit.com/f/nvjdlyeh3ah" method="POST" className="xl:pl-10 2xl:pl-20">
+//           <div className="md:grid md:items-center md:grid-cols-2 md:gap-2">
+//             <FormInput
+//               label="Name"
+//               name="fi-sender-fullName"
+//               placeholder="Kwabena Junior"
+//               autoComplete="name"
+//             />
+
+//             <FormInput
+//               label="Email"
+//               name="fi-sender-email"
+//               type="email"
+//               placeholder="samuelassanjnr@gmail.com"
+//               autoComplete="email"
+//             />
+//           </div>
+
+//           <FormTextarea
+//             label="Message"
+//             name="fi-text-message"
+//             placeholder="Hi"
+//             required
+//           />
+//           <button
+//             type="submit"
+//             className="btn reveal-up btn-primary w-full !max-w-full justify-center"
+//           >
+//             Submit
+//           </button>
+//         </form>
+//       </div>
+//     </section>
+//   );
+// }
+
+// export default Contact;
+
+
+
 function Contact() {
   return (
-    <section id="contact" className="section">
-      <div className="container lg:grid lg:grid-cols-2 lg:items-stretch">
-        <div className="mb-12 lg:mb-0 lg:flex lg:flex-col">
-          <h2 className="headline-2 lg:max-w-[12ch] reveal-up">
-            Contact me for collaboration
-          </h2>
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch] reveal-up">
-            Reach out today to discuss your project needs and start
-            collaborating on something amazing!
-          </p>
-          <div className="flex items-center gap-2 mt-auto">
-            {socialLinks.map(({ href, icon, alt }, key) => (
-              <a
-                key={key}
-                href={href}
-                target="_blank"
-                className="w-12 h-12 grid place-items-center ring-inset ring-2 ring-zinc-50/5 rounded-lg transition-[background-color,color] hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 reveal-up"
-              >
-                {icon}
-              </a>
-            ))}
+    <section id="contact" className="relative section overflow-hidden bg-zinc-900">
+      {/* Wave Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="bg-gradient-to-t from-sky-900/20 via-zinc-900/0 to-zinc-900/50 w-full h-full animate-[pulse_20s_linear_infinite]"></div>
+      </div>
+
+      <div className="container lg:grid lg:grid-cols-2 lg:gap-12 relative z-10">
+        {/* Left Panel */}
+        <div className="reveal-up mb-10 lg:mb-0">
+          <div className="bg-zinc-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <h2 className="headline-2 text-sky-400 mb-4">Let's Build Something Together</h2>
+            <p className="text-zinc-300 mb-6 leading-relaxed">
+              Got a project idea? I’m open to collaborating with clients, teams, or startups.
+              Reach out and let's create digital experiences that stand out!
+            </p>
+
+            <div className="flex items-center gap-4 mt-4">
+              {socialLinks.map(({ href, icon }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  className="w-12 h-12 grid place-items-center rounded-lg ring-1 ring-sky-400/30 hover:ring-sky-400/60 hover:scale-110 transition-all duration-300 text-sky-400 font-bold"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-        <form action="https://forminit.com/f/nvjdlyeh3ah" method="POST" className="xl:pl-10 2xl:pl-20">
-          <div className="md:grid md:items-center md:grid-cols-2 md:gap-2">
+
+        {/* Right Panel */}
+        <form
+          action="https://forminit.com/f/nvjdlyeh3ah"
+          method="POST"
+          className="reveal-up bg-zinc-800/40 backdrop-blur-lg p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500"
+        >
+          <div className="md:grid md:grid-cols-2 md:gap-4">
             <FormInput
               label="Name"
               name="fi-sender-fullName"
-              placeholder="Kwabena Junior"
-              autoComplete="name"
+              placeholder="Mr. Junior"
             />
-
             <FormInput
               label="Email"
               name="fi-sender-email"
-              type="email"
               placeholder="samuelassanjnr@gmail.com"
-              autoComplete="email"
+              type="email"
             />
           </div>
 
           <FormTextarea
             label="Message"
             name="fi-text-message"
-            placeholder="Hi"
+            placeholder="Hi, I'd like to collaborate!"
             required
           />
+
           <button
             type="submit"
-            className="btn reveal-up btn-primary w-full !max-w-full justify-center"
+            className="btn btn-primary w-full justify-center mt-6"
           >
-            Submit
+            Send Message
           </button>
         </form>
       </div>

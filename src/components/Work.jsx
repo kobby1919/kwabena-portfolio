@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
 const works = [
@@ -12,12 +13,6 @@ const works = [
     title: 'Free stock photo app',
     tags: ['API', 'SPA'],
     projectLink: 'https://pixstock-official.vercel.app/'
-  },
-  {
-    imgSrc: '/images/project-3.jpg',
-    title: 'Recipe app',
-    tags: ['Development', 'API'],
-    projectLink: ''
   },
   {
     imgSrc: '/images/project-4.jpg',
@@ -39,26 +34,60 @@ const works = [
   },
 ];
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 function Work() {
+  return (
+    <section id="work" className="section">
+      <div className="container">
+        <motion.h2
+          className="headline-2 mb-8 reveal-up"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Projects I’m Proud Of
+        </motion.h2>
 
-    return (
-       <section id="work" className="section">
-        <div className="container">
-            <h2 className="headline-2 mb-8 reveal-up">
-                My portfolio highlights
-            </h2>
-
-            <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
-                {
-                    works.map(({ imgSrc, title, tags, projectLink }, key) => (
-                        <ProjectCard key={key} imgSrc={imgSrc} title={title} tags={tags} projectLink={projectLink} classes="reveal-up"/>
-                    ))
-                }
-            </div>
-        </div>
-       </section>
-    )
+        <motion.div
+          className="grid gap-6 grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {works.map((work, idx) => (
+            <motion.div key={idx} variants={item}>
+              <ProjectCard
+                imgSrc={work.imgSrc}
+                title={work.title}
+                tags={work.tags}
+                projectLink={work.projectLink}
+                classes="reveal-up"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 
 export default Work;

@@ -4,6 +4,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body {
   @apply bg-zinc-900 text-zinc-50;
 }
@@ -63,6 +64,72 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
+/*image slide */
+
+/* .hero-text {
+  @apply flex flex-col justify-center md:text-[60px] text-[32px] font-semibold relative z-10 leading-tight;
+}
+
+.slide {
+  @apply inline-block ml-3 h-[42px] md:h-[70px] overflow-hidden align-middle;
+} */
+
+.hero-text {
+  @apply flex flex-col justify-center font-semibold relative z-10 pointer-events-none;
+  font-size: clamp(30px, 6vw, 60px); /* responsive font */
+  line-height: 1.2;
+}
+
+
+.slide {
+  @apply inline-block overflow-hidden align-middle ml-2;
+  height: 1.3em; 
+}
+
+.wrapper {
+  @apply flex flex-col gap-1;
+}
+
+
+
+.animate-slide {
+  animation: slideWords 4s infinite;
+}
+
+@keyframes slideWords {
+  0%   { transform: translateY(0%); }
+  50%  { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+
+/* Button animation */
+.floating-icon {
+  display: inline-flex;
+  margin-left: 6px;
+  animation: bounceIcon 1.4s infinite;
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes gradientBorder {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
 
 .headline-1 {
   @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
@@ -109,30 +176,149 @@ html {
 }
 
 /* Button */ 
+/* Button */ 
 
 .btn {
-  @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color]
+  @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium text-sm ring-1 ring-zinc-50/5 ring-inset;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
 }
 
 .btn-secondary {
-  @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80 hidden md:inline-flex
+  @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80 hidden md:inline-flex;
 }
 
 .btn .material-symbols-rounded {
-  @apply text-[18px]
+  @apply text-[18px];
 }
 
-.btn:has( .material-symbols-rounded) {
-  @apply pr-3
+.btn:has(.material-symbols-rounded) {
+  @apply pr-3;
 }
 
+/* ============================= */
+/* PRIMARY BUTTON */
+/* ============================= */
 .btn-primary {
-  @apply h-11 bg-sky-400 text-zinc-950 hover:bg-sky-300 active:bg-sky-400
+  position: relative;
+  @apply h-11 text-zinc-950 rounded-xl;
+  
+  /* Solid sky blue inside */
+  background:
+    linear-gradient(120deg, #38bdf8, #5ecbfa, #22b3f2, #38bdf8)
+ padding-box,
+
+    /* Animated sky-blue border only */
+    linear-gradient(
+      120deg,
+      #38bdf8,
+      #7dd3fc,
+      #0ea5e9,
+      #38bdf8
+    ) border-box;
+
+  border: 2px solid transparent;
+  background-size: 100% 100%, 300% 300%;
+  animation: gradientBorder 6s ease infinite;
+
+  box-shadow: 0 0 0 rgba(56,189,248,0);
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
 }
+
+
+
+
+/* Keep blue */
+.btn-primary:hover {
+  @apply bg-sky-400;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(56,189,248,0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(56,189,248,0.25);
+}
+
+/* ============================= */
+/* OUTLINE BUTTON */
+/* ============================= */
 
 .btn-outline {
-  @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800
+  @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800;
 }
+
+/* ============================= */
+/* ICON CIRCLE EFFECT */
+/* ============================= */
+
+.icon-wrap {
+  @apply grid place-items-center rounded-full overflow-hidden;
+  width: 0;
+  height: 0;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* Show circle on hover */
+.btn:hover .icon-wrap {
+  width: 34px;
+  height: 34px;
+}
+
+/* White circle for primary */
+.btn-primary:hover .icon-wrap {
+  background: white;
+}
+
+/* Light circle for outline */
+.btn-outline:hover .icon-wrap {
+  background: rgb(244 244 245);
+}
+
+/* Icon contrast */
+.btn-primary:hover .floating-icon {
+  color: black;
+}
+
+.btn-outline:hover .floating-icon {
+  color: black;
+}
+
+/* ============================= */
+/* FLOATING ICON */
+/* ============================= */
+
+.floating-icon {
+  display: inline-flex;
+  animation: bounceIcon 1.4s infinite;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes bounceIcon {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  60% { transform: translateY(-3px); }
+}
+
+/* Ripple click effect */
+.btn-primary .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+
+
 
 /* Text field */ 
 

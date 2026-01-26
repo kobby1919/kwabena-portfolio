@@ -1,40 +1,133 @@
-import  { ButtonPrimary, ButtonOutline } from "./Button";
+import { words } from "../constants";
+import { ButtonPrimary, ButtonOutline } from "./Button";
 import ParticlesBackground from "./ParticlesBackground";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const fadeInImage = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
 
 function Hero() {
   return (
-    <section id="home" className="pt-28 lg:pt-36">
+    <motion.section
+      id="home"
+      className="pt-28 lg:pt-36"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       <ParticlesBackground />
 
       <div className="container lg:grid items-center lg:grid-cols-2 lg:gap-10 relative z-10">
-        <div>
-          <div className="flex items-center gap-3">
+        {/* LEFT COLUMN */}
+        <motion.div
+          className="flex flex-col justify-center gap-3 w-full lg:max-w-[480px]"
+          variants={container}
+        >
+          {/* Available for work */}
+          <motion.div variants={fadeUp} className="flex items-center gap-3">
             <figure className="img-box w-9 h-9 rounded-lg">
               <img
-                src="/images/avatar-1.jpg"
+                src="/images/jay's-avatar.jpg"
                 width={40}
                 height={40}
                 alt="Kwabena Junior portrait"
                 className="img-cover"
               />
             </figure>
+
             <div className="flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide">
-              <span className="relative w-2 h-2 rounded-full bg-emerald-400">
-                <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping"></span>
+              <span className="flex items-center gap-2 px-3 py-1 text-xs bg-sky-400/10 text-sky-300 rounded-full border border-sky-400/20 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-sky-400 rounded-full shadow-[0_0_6px_#38bdf8] animate-pulse"></span>
+                Currently open to work
               </span>
-              Available for work
             </div>
-          </div>
-          <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">Building Scalable Modern Websites for the Future</h2>
-          <div className="flex items-center gap-3"><ButtonPrimary label="Download CV" icon="download" /> <ButtonOutline href="#about" label="Scroll down" icon="arrow_downward" /></div>
-        </div>
-        <div className="hidden lg:block">
-            <figure className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden">
-                <img src="/images/adobe-jay.png" width={656} height={800} alt="Kwabena Junior" className="w-full" />
-            </figure>
-        </div>
+          </motion.div>
+
+          {/* HERO TEXT */}
+          <motion.div variants={fadeUp} className="hero-text flex flex-col">
+            <h1 className="relative flex items-center mb-0.5">
+              Engineering
+              <span className="slide flex-shrink-0 inline-block overflow-hidden h-[2em] md:h-[2.5em] ml-2 align-middle">
+                <span className="wrapper animate-slide flex flex-col">
+                  {words.map((word, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1 md:gap-2 pb-1 whitespace-nowrap flex-shrink-0"
+                    >
+                      <img
+                        src={word.imgPath}
+                        alt={word.text}
+                        className="w-7 h-7 md:w-10 md:h-10 p-1 rounded-full bg-white"
+                      />
+                      <span className="whitespace-nowrap">{word.text}</span>
+                    </span>
+                  ))}
+                </span>
+              </span>
+            </h1>
+
+            <h1 className="mb-0.5">into Scalable,</h1>
+            <h1 className="mb-4">Real-World Solutions</h1>
+          </motion.div>
+
+          {/* BUTTONS */}
+          <motion.div variants={fadeUp} className="flex items-center gap-3">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+              <ButtonPrimary label="Download CV" icon="download" />
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+              <ButtonOutline
+                href="#about"
+                label="Scroll down"
+                icon="arrow_downward"
+                
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT COLUMN - IMAGE */}
+        <motion.div
+          className="hidden lg:block relative"
+          variants={fadeInImage}
+        >
+          <div className="absolute -inset-4 bg-sky-400/20 blur-3xl rounded-full"></div>
+
+          <figure className="relative w-full max-w-[480px] ml-auto rounded-[50px] overflow-hidden">
+            <img
+              src="/images/adobe-jay.png"
+              alt="Kwabena Junior"
+              className="w-full"
+            />
+          </figure>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
