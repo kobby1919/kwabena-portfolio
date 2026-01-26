@@ -30,11 +30,19 @@ const fadeInImage = {
 
 
 function Hero() {
+const [isMobile, setIsMobile] = useState(false);
 
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
+useEffect(() => {
+  const checkMobile = () => {
     setIsMobile(window.innerWidth < 768);
-  }, []);
+  };
+
+  checkMobile(); // run on mount
+  window.addEventListener("resize", checkMobile);
+
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
+
   return (
     <motion.section
       id="home"
