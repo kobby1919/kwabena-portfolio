@@ -26,7 +26,7 @@ const sitemap = [
 const socials = [
   {
     label: "GitHub",
-    href: "https://www.github.com/codewithsadee-org",
+    href: "https://github.com/kobby1919",
     icon: (
       <svg
         width="24"
@@ -44,7 +44,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/codewithsadee",
+    href: "https://www.linkedin.com/in/kwabena-junior-12b185294/",
     icon: (
       <svg
         width="24"
@@ -62,7 +62,7 @@ const socials = [
   },
   {
     label: "Twitter X",
-    href: "https://x.com/codewithsadee_",
+    href: "https://x.com/TheSynthJay",
     icon:  (
       <svg
         width="24"
@@ -80,7 +80,7 @@ const socials = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/codewithsadee",
+    href: "",
     icon: (
       <svg
         width="25"
@@ -172,7 +172,7 @@ const socials = [
 function Footer() {
   return (
     <footer className="relative section bg-zinc-900 overflow-hidden">
-      {/* Optional animated background */}
+      
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-sky-900/10 to-zinc-900 opacity-30 pointer-events-none"></div>
 
       <div className="container relative z-10 lg:grid lg:grid-cols-3 gap-10">
@@ -217,7 +217,7 @@ function Footer() {
                 target="_blank"
                 className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-800/60 text-sky-400 hover:bg-sky-400 hover:text-zinc-900 shadow-md hover:shadow-sky-400/50 transition-all duration-300"
               >
-                {icon} {/* Could replace with icons later */}
+                {icon} 
               </a>
             ))}
           </div>

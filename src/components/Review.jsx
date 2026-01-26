@@ -1,12 +1,9 @@
-import ReviewCard from "./ReviewCard";
-//Node Modules
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from '@gsap/react';
-//Register gsap plugins 
-gsap.registerPlugin(useGSAP, ScrollTrigger); 
+import ReviewCard from "./ReviewCard";
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 const reviews = [
   {
@@ -47,39 +44,85 @@ const reviews = [
   }
 ];
 
+export default function Review() {
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    const cards = gsap.utils.toArray(".review-card");
 
-function Review() {
+    const getScrollAmount = () => track.scrollWidth - window.innerWidth;
 
-  useGSAP(() => {
-    gsap.to('.scrub-slide', {
-      scrollTrigger: {
-        trigger: '.scrub-slide',
-        start: '-200% 80%',
-        end: '400% 80%',
-        scrub: true
-      },
-      x: '-1000'
-    })
-  })
+    const initSlide = () => {
+      const tween = gsap.to(track, {
+        x: () => -getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getScrollAmount()}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: () => {
+            // Center-focus animation
+            const center = window.innerWidth / 2;
+            cards.forEach(card => {
+              const box = card.getBoundingClientRect();
+              const cardCenter = box.left + box.width / 2;
+              const distance = Math.abs(center - cardCenter);
 
-    return (
-        <section id="reviews" className="section overflow-hidden">
-            <div className="container">
-                <h2 className="headline-2 mb-8 reveal-up">
-                    What our customers say
-                </h2>
-                <div className="scrub-slide flex items-stretch gap-3 w-fit">
-                    {
-                        reviews.map(({content, name, imgSrc, company}, key) => (
-                            <ReviewCard content={content} name={name} imgSrc={imgSrc} company={company} />
-                        ))
-                    }
-                </div>
-            </div>
-        </section>
+              const scale = gsap.utils.clamp(0.92, 1.05, 1.05 - distance / 600);
+              const opacity = gsap.utils.clamp(0.5, 1, 1 - distance / 800);
 
-    )
+              gsap.to(card, { scale, opacity, duration: 0.2, overwrite: true });
+            });
+          }
+        },
+      });
+
+      ScrollTrigger.refresh();
+      return tween;
+    };
+
+    // Wait for images to load before initializing GSAP
+    const images = track.querySelectorAll("img");
+    let loadedCount = 0;
+
+    images.forEach(img => {
+      if (img.complete) loadedCount++;
+      else img.onload = () => {
+        loadedCount++;
+        if (loadedCount === images.length) initSlide();
+      };
+    });
+
+    if (loadedCount === images.length) initSlide();
+
+    // Refresh on window resize
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} id="reviews" className="section overflow-hidden">
+      <div className="container mb-8">
+        <h2 className="headline-2 reveal-up">What our customers say</h2>
+      </div>
+
+      <div ref={trackRef} className="scrub-slide flex gap-4 px-4 w-max">
+        {reviews.map((review, i) => (
+          <ReviewCard key={i} {...review} />
+        ))}
+      </div>
+    </section>
+  );
 }
-
-export default Review;
