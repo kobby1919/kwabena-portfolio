@@ -43,7 +43,7 @@ function Hero() {
   <ParticlesBackground />
 </div>
 
-
+    
 
       <div className="container lg:grid items-center lg:grid-cols-2 lg:gap-10 relative z-10">
         {/* LEFT COLUMN */}
@@ -70,6 +70,7 @@ function Hero() {
               </span>
             </div>
           </motion.div>
+        
 
           {/* HERO TEXT */}
           <motion.div variants={fadeUp} className="hero-text flex flex-col">
