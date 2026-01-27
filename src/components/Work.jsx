@@ -99,7 +99,7 @@ const works = [
     imgSrc: "/images/SMS.jpg", 
     title: "School Management System",
     tags: ["Full Stack", "React", "Node.js", "MongoDB"],
-    projectLink: "https://github.com/your-github-username/school-management-backend",
+    projectLink: "https://github.com/kobby1919/school-management-system",
   },
   {
     imgSrc: "/images/project-1.jpg",
