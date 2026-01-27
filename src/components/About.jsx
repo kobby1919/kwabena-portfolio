@@ -38,7 +38,7 @@ function About() {
           <h2 className="headline-2 mb-4 text-sky-400">Who I Am</h2>
 
           <p className="text-zinc-300 md:text-lg leading-relaxed mb-6">
-            Hi, I'm Mr. Junior — a web developer passionate about creating
+            Hi, I'm Samuel Kwabena Assan — a web developer passionate about creating
             sleek, modern websites. I blend creativity with technical expertise
             to deliver digital experiences that are both visually stunning and
             highly functional.
