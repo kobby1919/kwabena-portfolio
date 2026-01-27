@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
-function ProjectCard({ imgSrc, title, tags, projectLink, classes }) {
+function ProjectCard({ imgSrc, title, tags, projectLink, status, classes }) {
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.02 }}
@@ -11,24 +11,28 @@ function ProjectCard({ imgSrc, title, tags, projectLink, classes }) {
         classes
       }
     >
-      {/* Project image */}
-      <figure className="overflow-hidden rounded-2xl aspect-video">
-        <motion.img
-          src={imgSrc}
-          alt={title}
-          loading="lazy"
-          className="img-cover transition-transform duration-500 group-hover:scale-110"
-          whileHover={{ scale: 1.06 }}
-          transition={{ duration: 0.4 }}
-        />
+      {/* Project image / background */}
+      <figure className="overflow-hidden rounded-2xl aspect-video bg-zinc-800 flex items-center justify-center">
+        {imgSrc && (
+          <motion.img
+            src={imgSrc}
+            alt={title}
+            loading="lazy"
+            className="img-cover transition-transform duration-500 group-hover:scale-110"
+            whileHover={{ scale: 1.06 }}
+            transition={{ duration: 0.4 }}
+          />
+        )}
+
+        {/* Title centered in middle */}
+        <figcaption className="absolute inset-0 flex items-center justify-center text-center text-white font-bold text-xl z-10 px-4">
+          {title}
+        </figcaption>
       </figure>
 
-      {/* Overlay on hover */}
-      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 gap-3">
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
-
-        {/* Tags slide up */}
-        <div className="flex flex-wrap gap-2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+      {/* Tags at bottom-right */}
+      {tags && tags.length > 0 && (
+        <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 z-10">
           {tags.map((label, idx) => (
             <span
               key={idx}
@@ -38,27 +42,36 @@ function ProjectCard({ imgSrc, title, tags, projectLink, classes }) {
             </span>
           ))}
         </div>
+      )}
 
-        {/* Visit button */}
-        {projectLink && (
-          <a
-            href={projectLink}
-            target="_blank"
-            className="mt-3 w-10 h-10 rounded-full bg-sky-400 grid place-items-center text-zinc-900 hover:bg-sky-500 transition-colors"
-          >
-            <span className="material-symbols-rounded">arrow_outward</span>
-          </a>
-        )}
-      </div>
+      {/* Overlay for Coming Soon */}
+      {status && !projectLink && (
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white text-lg font-semibold z-20">
+          {status}
+        </div>
+      )}
+
+      {/* Live link button */}
+      {projectLink && (
+        <a
+          href={projectLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-5 right-5 w-10 h-10 rounded-full bg-sky-400 grid place-items-center text-zinc-900 hover:bg-sky-500 transition-colors z-20"
+        >
+          <span className="material-symbols-rounded">arrow_outward</span>
+        </a>
+      )}
     </motion.div>
   );
 }
 
 ProjectCard.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
   title: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
   projectLink: PropTypes.string,
+  status: PropTypes.string,
   classes: PropTypes.string,
 };
 
