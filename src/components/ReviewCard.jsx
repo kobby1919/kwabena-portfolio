@@ -7,7 +7,7 @@ const ratings = new Array(5).fill({
 
 function ReviewCard({ content, name, imgSrc, company }) {
   return (
-    <div className="review-card min-w-[200px] max-w-[240px] md:min-w-[240px] md:max-w-[280px] min-h-[320px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 flex flex-col shadow-lg transition-all duration-300 relative group hover:-translate-y-1 hover:shadow-2xl">
+    <div className="review-card flex-shrink-0 min-w-[200px] max-w-[240px] md:min-w-[240px] md:max-w-[280px] min-h-[320px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 flex flex-col shadow-lg transition-all duration-300 relative group hover:-translate-y-1 hover:shadow-2xl">
 
       {/* Decorative quote */}
       <div className="absolute top-2 left-3 text-white/10 text-7xl select-none pointer-events-none">“</div>
@@ -41,7 +41,7 @@ function ReviewCard({ content, name, imgSrc, company }) {
       {/* Footer: Avatar + Name + Company + Timestamp */}
       <div className="flex items-center gap-3 mt-auto">
         <img
-          src={imgSrc}
+          src={imgSrc || "https://via.placeholder.com/44"} // fallback image
           alt={name}
           loading="lazy"
           className="w-11 h-11 rounded-full object-cover border border-white/10"
@@ -53,7 +53,7 @@ function ReviewCard({ content, name, imgSrc, company }) {
         </div>
       </div>
 
-      {/* Decorative blur circle to fill bottom whitespace */}
+      {/* Decorative blur circle */}
       <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/5 rounded-full blur-lg pointer-events-none"></div>
     </div>
   );

@@ -28,7 +28,6 @@ const fadeInImage = {
   },
 };
 
-
 function Hero() {
   return (
     <motion.section
@@ -39,11 +38,9 @@ function Hero() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-     <div className="hidden md:block">
-  <ParticlesBackground />
-</div>
-
-    
+      <div className="hidden md:block">
+        <ParticlesBackground />
+      </div>
 
       <div className="container lg:grid items-center lg:grid-cols-2 lg:gap-10 relative z-10">
         {/* LEFT COLUMN */}
@@ -70,7 +67,6 @@ function Hero() {
               </span>
             </div>
           </motion.div>
-        
 
           {/* HERO TEXT */}
           <motion.div variants={fadeUp} className="hero-text flex flex-col">
@@ -102,29 +98,22 @@ function Hero() {
           {/* BUTTONS */}
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <ButtonPrimary
-  label="Download CV"
-  icon="download"
-  classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
-/>
+              label="Download CV"
+              icon="download"
+              classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
+            />
 
-
-            
-              <ButtonOutline
-                href="#about"
-                label="Scroll down"
-                icon="arrow_downward"
-                classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
-                
-              />
-            
+            <ButtonOutline
+              href="#about"
+              label="Scroll down"
+              icon="arrow_downward"
+              classes="hover:scale-[1.03] active:scale-[0.97] transition-transform"
+            />
           </motion.div>
         </motion.div>
 
         {/* RIGHT COLUMN - IMAGE */}
-        <motion.div
-          className="hidden lg:block relative"
-          variants={fadeInImage}
-        >
+        <motion.div className="hidden lg:block relative" variants={fadeInImage}>
           <div className="absolute -inset-4 bg-sky-400/20 blur-2xl opacity-60 rounded-full"></div>
 
           <figure className="relative w-full max-w-[480px] ml-auto rounded-[50px] overflow-hidden">

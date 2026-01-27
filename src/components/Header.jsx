@@ -13,8 +13,8 @@ function Header() {
           <a href="/" className="logo">
             <img
               src="/images/logo.svg"
-              width={40}
-              height={40}
+              width={90}
+              height={90}
               alt="Kwabena Junior"
             />
           </a>

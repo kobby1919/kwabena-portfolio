@@ -227,7 +227,7 @@ function Footer() {
       {/* Bottom */}
       <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col lg:flex-row items-center justify-between text-sm text-zinc-500">
         <a href="/" className="mb-2 lg:mb-0 flex items-center gap-2">
-          <img src="/images/logo.svg" width={36} height={36} alt="Logo" className="opacity-80" />
+          <img src="/images/logo.svg" width={40} height={40} alt="Logo" className="opacity-80" />
           <span className="text-zinc-300 font-semibold">Mr. Junior</span>
         </a>
         <p>&copy; 2026 All rights reserved</p>

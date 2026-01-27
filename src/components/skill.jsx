@@ -49,7 +49,7 @@ function Skill() {
       <div className="container">
         <h2 className="headline-2 reveal-up">My Core Tech Stack</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">
-         A look at the stack I use to deliver quality digital products.
+         An overview of the tech stack I rely on to create high-quality digital products.
         </p>
 
         <div className="grid gap-4 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
