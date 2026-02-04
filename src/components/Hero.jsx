@@ -52,7 +52,7 @@ function Hero() {
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <figure className="img-box w-9 h-9 rounded-lg">
               <img
-                src="/images/jay's-avatar.jpg"
+                src="/images/new_avatar.jpg"
                 width={40}
                 height={40}
                 alt="Kwabena Junior portrait"

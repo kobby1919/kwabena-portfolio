@@ -58,12 +58,12 @@ const socials = [
           fill="currentColor"
         />
       </svg>
-    )
+    ),
   },
   {
     label: "Twitter X",
     href: "https://x.com/TheSynthJay",
-    icon:  (
+    icon: (
       <svg
         width="24"
         height="24"
@@ -94,85 +94,13 @@ const socials = [
           fill="currentColor"
         />
       </svg>
-    )
+    ),
   },
 ];
-
-// function Footer() {
-//   return (
-//     <footer className="section">
-//       <div className="container">
-//         <div className="lg:grid lg:grid-cols-2">
-//           <div className="mb-10">
-//             <h2 className="headline-1 mb-8 lg:max-w-[12ch] reveal-up">
-//               Let&apos;s work together today!
-//             </h2>
-//             <ButtonPrimary
-//               href="mailto:samuelassanjnr@gmail.com"
-//               label="Start Project"
-//               icon="chevron_right"
-//               classes="reveal-up"
-//             />
-//           </div>
-//           <div className="grid grid-cols-2 gap-4 lg:pl-20">
-//             <div>
-//               <p className="mb-2 reveal-up">Sitemap</p>
-//               <ul>
-//                 {sitemap.map(({ label, href }, key) => (
-//                   <li key={key} className="">
-//                     <a
-//                       href={href}
-//                       className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
-//                     >
-//                       {label}
-//                     </a>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-
-//             <div>
-//               <p className="mb-2 reveal-up">Socials</p>
-//               <ul>
-//                 {socials.map(({ label, href }, key) => (
-//                   <li key={key} className="">
-//                     <a
-//                       href={href}
-//                       target="_blank"
-//                       className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
-//                     >
-//                       {label}
-//                     </a>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="flex items-center justify-between pt-10 mb-8">
-//           <a href="/" className="logo reveal-up">
-//             <img
-//               src="/images/logo.svg"
-//               width={40}
-//               height={40}
-//               alt="Logo"
-//               className=""
-//             />
-//           </a>
-//           <p className="text-zince-500 text-sm reveal-up">
-//             &copy; 2026 <span className="text-zinc-200">codetrade</span>{" "}
-//           </p>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
 
 function Footer() {
   return (
     <footer className="relative section bg-zinc-900 overflow-hidden">
-      
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-sky-900/10 to-zinc-900 opacity-30 pointer-events-none"></div>
 
       <div className="container relative z-10 lg:grid lg:grid-cols-3 gap-10">
@@ -191,7 +119,9 @@ function Footer() {
 
         {/* Middle - Sitemap */}
         <div className="reveal-up flex flex-col">
-          <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">Sitemap</h3>
+          <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">
+            Sitemap
+          </h3>
           <ul className="space-y-1">
             {sitemap.map(({ label, href }, i) => (
               <li key={i}>
@@ -208,7 +138,9 @@ function Footer() {
 
         {/* Right - Socials */}
         <div className="reveal-up flex flex-col">
-          <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">Connect</h3>
+          <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">
+            Connect
+          </h3>
           <div className="flex gap-3 mt-1">
             {socials.map(({ label, href, icon }, i) => (
               <a
@@ -217,7 +149,7 @@ function Footer() {
                 target="_blank"
                 className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-800/60 text-sky-400 hover:bg-sky-400 hover:text-zinc-900 shadow-md hover:shadow-sky-400/50 transition-all duration-300"
               >
-                {icon} 
+                {icon}
               </a>
             ))}
           </div>
@@ -227,7 +159,13 @@ function Footer() {
       {/* Bottom */}
       <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col lg:flex-row items-center justify-between text-sm text-zinc-500">
         <a href="/" className="mb-2 lg:mb-0 flex items-center gap-2">
-          <img src="/images/logo.svg" width={40} height={40} alt="Logo" className="opacity-80" />
+          <img
+            src="/images/logo.svg"
+            width={40}
+            height={40}
+            alt="Logo"
+            className="opacity-80"
+          />
           <span className="text-zinc-300 font-semibold">Mr. Junior</span>
         </a>
         <p>&copy; 2026 All rights reserved</p>
