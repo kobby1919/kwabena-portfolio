@@ -333,3 +333,29 @@ html {
 .text-field::placeholder {
   @apply text-zinc-400 
 }
+
+/* navmenu pop-up */ 
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-dropdown-enter {
+  transform: translateY(-15px);
+  opacity: 0;
+}
+
+.mobile-dropdown-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.35s ease-out;
+}
