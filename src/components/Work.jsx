@@ -1,166 +1,105 @@
-// import { motion } from "framer-motion";
-// import ProjectCard from "./ProjectCard";
-
-// const works = [
-//   {
-//     imgSrc: '/images/project-1.jpg',
-//     title: 'Full stack music app',
-//     tags: ['API', 'MVC', 'Development'],
-//     projectLink: 'https://musify-5al0.onrender.com/'
-//   },
-//   {
-//     imgSrc: '/images/project-2.jpg',
-//     title: 'Free stock photo app',
-//     tags: ['API', 'SPA'],
-//     projectLink: 'https://pixstock-official.vercel.app/'
-//   },
-//   {
-//     imgSrc: '/images/project-4.jpg',
-//     title: 'Real state website',
-//     tags: ['Web-design', 'Development'],
-//     projectLink: 'https://github.com/codewithsadee-org/wealthome'
-//   },
-//   {
-//     imgSrc: '/images/project-5.jpg',
-//     title: 'eCommerce website',
-//     tags: ['eCommerce', 'Development'],
-//     projectLink: 'https://github.com/codewithsadee/anon-ecommerce-website'
-//   },
-//   {
-//     imgSrc: '/images/project-6.jpg',
-//     title: 'vCard Personal portfolio',
-//     tags: ['Web-design', 'Development'],
-//     projectLink: 'https://github.com/codewithsadee/vcard-personal-portfolio'
-//   },
-// ];
-
-// const container = {
-//   hidden: {},
-//   show: {
-//     transition: {
-//       staggerChildren: 0.12,
-//     },
-//   },
-// };
-
-// const item = {
-//   hidden: { opacity: 0, y: 40 },
-//   show: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.6, ease: "easeOut" },
-//   },
-// };
-
-// function Work() {
-//   return (
-//     <section id="work" className="section">
-//       <div className="container">
-//         <motion.h2
-//           className="headline-2 mb-8 reveal-up"
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//         >
-//           Projects I’m Proud Of
-//         </motion.h2>
-
-//         <motion.div
-//           className="grid gap-6 grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]"
-//           variants={container}
-//           initial="hidden"
-//           whileInView="show"
-//           viewport={{ once: true, amount: 0.2 }}
-//         >
-//           {works.map((work, idx) => (
-//             <motion.div key={idx} variants={item}>
-//               <ProjectCard
-//                 imgSrc={work.imgSrc}
-//                 title={work.title}
-//                 tags={work.tags}
-//                 projectLink={work.projectLink}
-//                 classes="reveal-up"
-//               />
-//             </motion.div>
-//           ))}
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Work;
+import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
-const works = [
+const projects = [
   {
-    imgSrc: "/images/SMS.jpg", 
     title: "School Management System",
-    tags: ["Full Stack", "React", "Node.js", "MongoDB"],
-    projectLink: "https://github.com/kobby1919/school-management-system",
+    description: "A complete platform to manage students and teachers.",
+    image: "/images/SMS.jpg",
+    tech: ["React", "Node.js", "MongoDB"],
+    year: "2024",
+    type: "Web App",
+    status: "In-Progress",
+    featured: true,
+    slug: "school-management",
+    live: "https://your-live-link.com",
+    github: "https://github.com/yourusername/project",
+    category: "Full Stack",
   },
   {
-    imgSrc: "/images/project-1.jpg",
-    title: "Full stack music app",
-    tags: ["API", "MVC", "Development"],
-    projectLink: "",
-    status: "Coming Soon",
-  },
-  {
-    imgSrc: "/images/project-2.jpg",
-    title: "Free stock photo app",
-    tags: ["API", "SPA"],
-    projectLink: "",
-    status: "Coming Soon",
+    title: "Music Streaming App",
+    description: "Modern music streaming platform with API integration.",
+    image: "/images/project-1.jpg",
+    tech: ["React", "Express", "API"],
+    year: "2023",
+    type: "Web App",
+    status: "Coming soon",
+    slug: "music-app",
+    live: "https://your-live-link.com",
+    github: "https://github.com/yourusername/project",
+    category: "Frontend",
   },
 ];
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
 export default function Work() {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((project) => project.category === filter);
+
   return (
     <section id="work" className="section">
       <div className="container">
-        <motion.h2
-          className="headline-2 mb-8 reveal-up"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Projects I’m Proud Of
-        </motion.h2>
 
-        <motion.div
-          className="grid gap-6 grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {works.map((work, idx) => (
-            <motion.div key={idx} variants={item}>
-              <ProjectCard
-                imgSrc={work.imgSrc}
-                title={work.title}
-                tags={work.tags}
-                projectLink={work.projectLink}
-                status={work.status}
-                classes="reveal-up"
-              />
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
+          <div>
+            <h2 className="headline-2">Projects I’m Proud Of</h2>
+            <p className="text-zinc-400 mt-2 max-w-xl">
+              Selected projects showcasing my best work.
+            </p>
+          </div>
+
+          <a
+            href="/projects"
+            className="mt-4 md:mt-0 text-sky-400 hover:underline"
+          >
+            View All Projects →
+          </a>
+        </div>
+
+        {/* Filter Buttons */}
+       {/* Filter Buttons (Skills-style) */}
+<div className="flex flex-wrap gap-3 mb-10">
+  {["All", "Full Stack", "Frontend"].map((item) => (
+    <button
+      key={item}
+      onClick={() => setFilter(item)}
+      className={`
+        px-5 py-2 
+        rounded-full 
+        text-sm 
+        capitalize
+        bg-zinc-900 
+        text-zinc-400 
+        border border-zinc-700
+        transition-all duration-300
+        hover:bg-sky-400 hover:text-black hover:border-sky-400
+      `}
+    >
+      {item}
+    </button>
+  ))}
+</div>
+
+        {/* Cards */}
+        <div className="flex flex-col md:flex-row gap-8 justify-start">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );
