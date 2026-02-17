@@ -5,9 +5,10 @@ import Header from "./components/Header";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
 import Home from "./pages/Home";
-import ProjectsPage from "./pages/Projectspage";
 import CaseStudy from "./pages/CaseStudy";
 import { useEffect } from "react";
+import Projectspage from "./pages/Projectspage";
+
 
 // App.jsx
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects" element={<Projectspage />} />
         <Route path="/projects/:slug" element={<CaseStudy />} />
       </Routes>
       <Footer />
