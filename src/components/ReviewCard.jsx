@@ -1,68 +1,57 @@
-import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
-  },
-};
-
-// Helper: get initials from name
-const getInitials = (name) => {
-  return name
-    .split(" ")
-    .map((n) => n[0].toUpperCase())
-    .slice(0, 2)
-    .join("");
-};
-
-function ReviewCard({ content, name, company, className = "" }) {
-  const initials = getInitials(name);
-
+function ReviewCard({ content, name, company }) {
   return (
-    <motion.article
-      variants={cardVariants}
-      className={`
-        review-card
-        group relative flex-shrink-0
-        w-[260px] md:w-[300px]
-        min-h-[220px]
-        rounded-3xl
-        border border-white/10
-        bg-gradient-to-br from-white/8 via-white/4 to-transparent
-        p-5
-        flex flex-col
-        transition-all duration-300
-        hover:-translate-y-2
-        hover:border-sky-400
-        hover:bg-gradient-to-br hover:from-sky-400/10 hover:via-sky-400/5
-        ${className}
-      `}
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className="
+        relative w-full max-w-3xl
+        p-12
+        bg-gradient-to-br from-zinc-900/80 via-zinc-800/50 to-zinc-900/70
+        backdrop-blur-md
+        shadow-2xl
+        flex flex-col justify-between
+        overflow-hidden
+      "
+      style={{
+        borderRadius: "0.75rem",
+        boxShadow: "0 25px 80px rgba(0,0,0,0.5)"
+      }}
     >
-      {/* Glow accent */}
-      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-sky-400/10 via-sky-400/5 to-transparent" />
+      {/* Faint corner lines */}
+      <span className="absolute top-3 left-3 w-8 h-1 bg-white/20" />
+      <span className="absolute top-3 left-3 w-1 h-8 bg-white/20" />
+      <span className="absolute bottom-3 right-3 w-8 h-1 bg-white/20" />
+      <span className="absolute bottom-3 right-3 w-1 h-8 bg-white/20" />
+
+      {/* Quote */}
+      <span className="material-symbols-rounded text-sky-400 text-6xl mb-8">
+        format_quote
+      </span>
 
       {/* Review text */}
-      <p className="text-sm leading-relaxed text-white/80 mb-4 flex-1">
-        {content}
-      </p>
+      <p className="text-white/90 text-xl leading-relaxed mb-10">{content}</p>
 
-      {/* Footer: initials + name/company */}
-      <div className="mt-auto flex items-center gap-3">
-        {/* Initials avatar */}
-        <div className="w-10 h-10 rounded-full bg-sky-400/30 flex items-center justify-center text-white font-medium">
-          {initials}
+      {/* Footer */}
+      <div className="flex items-center gap-5 mt-auto">
+        {/* Avatar */}
+        <div className="w-16 h-16 rounded-full bg-sky-500/20 flex items-center justify-center text-white font-semibold text-lg">
+          {name
+            .split(" ")
+            .map((n) => n[0].toUpperCase())
+            .slice(0, 2)
+            .join("")}
         </div>
 
-        <div>
-          <h4 className="text-sm font-medium text-white">{name}</h4>
-          <p className="text-xs text-white/50">{company}</p>
+        {/* Name & Company */}
+        <div className="flex flex-col">
+          <span className="text-white font-semibold text-lg">{name}</span>
+          <span className="text-white/50 text-sm">{company}</span>
         </div>
       </div>
-    </motion.article>
+    </motion.div>
   );
 }
 
@@ -70,7 +59,6 @@ ReviewCard.propTypes = {
   content: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
 export default ReviewCard;

@@ -1,56 +1,31 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Review from "./components/Review";
-import Skill from "./components/skill";
-import Work from "./components/Work";
 
-//Node Modules
+// Node Modules
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { element } from "prop-types";
-import ParticlesBackground from "./components/ParticlesBackground";
-import CustomCursor from "./components/CustomCursor";
-
-//Register gsap plugins
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import Home from "./pages/Home";
+import ProjectsPage from "./pages/Projectspage";
+import CaseStudy from "./pages/CaseStudy";
+import { useEffect } from "react";
 
 // App.jsx
 function App() {
-  useGSAP(() => {
-    const elements = gsap.utils.toArray(" .reveal-up");
-    console.log(elements);
-    elements.forEach((element) => {
-      gsap.to(element, {
-        scrollTrigger: {
-          trigger: element,
-          start: "-200 bottom",
-          end: "bottom 80%",
-          scrub: true,
-        },
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      });
-    });
-  });
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <ReactLenis root>
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skill />
-        <Work />
-        <Review />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:slug" element={<CaseStudy />} />
+      </Routes>
       <Footer />
     </ReactLenis>
   );
