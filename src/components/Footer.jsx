@@ -100,12 +100,12 @@ const socials = [
 
 function Footer() {
   return (
-    <footer className="relative section bg-zinc-900 overflow-hidden">
+    <footer className="relative section bg-zinc-800 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-sky-900/10 to-zinc-900 opacity-30 pointer-events-none"></div>
 
       <div className="container relative z-10 lg:grid lg:grid-cols-3 gap-10">
         {/* Left - CTA */}
-        <div className="reveal-up flex flex-col justify-center">
+        <div className="flex flex-col justify-center">
           <h2 className="headline-2 text-sky-400 mb-4 lg:max-w-[12ch]">
             Let’s Build Something Amazing
           </h2>
@@ -118,7 +118,7 @@ function Footer() {
         </div>
 
         {/* Middle - Sitemap */}
-        <div className="reveal-up flex flex-col">
+        <div className="flex flex-col">
           <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">
             Sitemap
           </h3>
@@ -137,7 +137,7 @@ function Footer() {
         </div>
 
         {/* Right - Socials */}
-        <div className="reveal-up flex flex-col">
+        <div className="flex flex-col">
           <h3 className="text-zinc-400 mb-2 font-semibold tracking-wide">
             Connect
           </h3>

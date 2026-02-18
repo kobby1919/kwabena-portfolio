@@ -9,7 +9,7 @@ function FormTextarea({
 }) {
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="label reveal-up">
+      <label htmlFor={name} className="label">
         {label}
       </label>
 
@@ -18,7 +18,7 @@ function FormTextarea({
         name={name}
         placeholder={placeholder}
         required={required}
-        className={`text-field resize-y min-h-32 reveal-up max-h-80 ${className}`}
+        className={`text-field resize-y min-h-32 max-h-80 ${className}`}
       />
     </div>
   );

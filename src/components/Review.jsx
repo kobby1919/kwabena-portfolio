@@ -7,7 +7,7 @@ const initialReviews = [
   { content: "Dependable, disciplined, and always delivers quality work.", name: "Mr. Barrigah", company: "Links Engineering" },
   { content: "An exceptional developer — focused, humble, and consistent.", name: "Joseph Nyarko", company: "Links Engineering" },
   { content: "Always eager to learn and reliable when it matters.", name: "Jay", company: "Ministry of Health" },
-  { content: "One of the most impressive developers I’ve worked with.", name: "Lartey Gabriel", company: "Cyber Hawk" },
+  { content: "One of the most impressive developers I've worked with.", name: "Lartey Gabriel", company: "Cyber Hawk" },
   { content: "Strong problem-solving skills with clean, maintainable code.", name: "Randy Aduhene", company: "Cyber Hawk" },
 ];
 
@@ -18,20 +18,17 @@ export default function Review() {
   const [modalOpen, setModalOpen] = useState(false);
   const [newReview, setNewReview] = useState({ name: "", company: "", content: "" });
 
-  // Resize detection
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-slide testimonials
   useEffect(() => {
     const interval = setInterval(() => setCurrentIndex((prev) => (prev + 1) % reviews.length), 5000);
     return () => clearInterval(interval);
   }, [reviews]);
 
-  // Handle modal submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newReview.name || !newReview.company || !newReview.content) return;
@@ -41,17 +38,30 @@ export default function Review() {
   };
 
   return (
-    <section id="reviews" className="section py-20 bg-zinc-900">
-      <div className="container mb-6">
+    <section
+      id="reviews"
+      className="section py-20 relative overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse at 0% 100%, rgba(14,165,233,0.07) 0%, transparent 55%), linear-gradient(180deg, #18181b 0%, #18181b 100%)",
+      }}
+    >
+      {/* Top edge fade */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-zinc-900/80 to-transparent pointer-events-none" />
+
+      {/* Bottom edge fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-zinc-900/80 to-transparent pointer-events-none" />
+
+      <div className="container mb-6 relative z-10">
         <h2 className="headline-2 text-white mb-2">Testimonials</h2>
-        {/* Paragraph directly under h2, left-aligned */}
         <p className="text-zinc-400 mb-10 max-w-[60ch]">
-          Hear from clients and colleagues about their experience working together. Their feedback shows professionalism and quality in every project.
+          Hear from clients and colleagues about their experience working together.
+          Their feedback shows professionalism and quality in every project.
         </p>
       </div>
 
       {/* Testimonial Card */}
-      <div className="flex flex-col justify-center items-center overflow-hidden relative mt-10 gap-6">
+      <div className="flex flex-col justify-center items-center overflow-hidden relative z-10 mt-10 gap-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -68,12 +78,7 @@ export default function Review() {
         {/* Share Experience Button */}
         <button
           onClick={() => setModalOpen(true)}
-          className="
-            mt-6 flex items-center justify-center gap-2 px-6 py-3
-            text-white font-semibold rounded-xl
-            bg-white/10 backdrop-blur-md border border-white/20
-            hover:bg-white/20 hover:border-white/30 transition-all duration-300
-          "
+          className="mt-6 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
         >
           <span className="material-symbols-rounded text-lg">share</span>
           <span>Share Your Experience</span>
@@ -89,13 +94,12 @@ export default function Review() {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="relative bg-zinc-900/90 backdrop-blur-lg rounded-2xl shadow-2xl max-w-md w-full p-8"
+            className="relative bg-zinc-900/90 backdrop-blur-lg rounded-2xl shadow-2xl max-w-md w-full p-8 mx-4"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
           >
-            {/* Close Button */}
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-4 right-4 text-white/60 hover:text-white transition"
@@ -132,8 +136,6 @@ export default function Review() {
                 value={newReview.content}
                 onChange={(e) => setNewReview({ ...newReview, content: e.target.value })}
               />
-
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-sky-400/30 via-sky-400/20 to-sky-400/10 text-white rounded-xl font-medium hover:from-sky-400/50 hover:to-sky-400/20 transition-all"

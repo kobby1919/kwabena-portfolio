@@ -58,7 +58,7 @@ const skills = {
     {
       imgSrc: "/images/git.svg",
       label: "Git",
-      desc: "Version control & collaboration.",
+      desc: "Version control and collaboration.",
       level: 85,
     },
   ],
@@ -67,12 +67,23 @@ const skills = {
 const categories = ["frontend", "backend", "devops", "design"];
 
 function Skill() {
-  // Still filters on click
   const [activeCategory, setActiveCategory] = useState("frontend");
 
   return (
-    <section className="section">
-      <div className="container">
+    <section
+      className="section relative overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse at 100% 50%, rgba(14,165,233,0.07) 0%, transparent 60%), linear-gradient(180deg, #18181b 0%, #18181b 100%)",
+      }}
+    >
+      {/* Top edge fade */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-zinc-900/80 to-transparent pointer-events-none" />
+
+      {/* Bottom edge fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-zinc-900/80 to-transparent pointer-events-none" />
+
+      <div className="container relative z-10">
 
         {/* Heading */}
         <h2 className="headline-2 mb-4">Technical Expertise</h2>
@@ -81,27 +92,13 @@ function Skill() {
           backend, DevOps, and design.
         </p>
 
-        {/* Category Buttons (HOVER ONLY STYLING) */}
+        {/* Category Buttons */}
         <div className="flex flex-wrap gap-3 mb-10">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className="
-                px-5 py-2 
-                rounded-full 
-                text-sm 
-                capitalize
-                bg-zinc-900 
-                text-zinc-400 
-                border 
-                border-zinc-700
-                transition-all 
-                duration-300
-                hover:bg-sky-400 
-                hover:text-black 
-                hover:border-sky-400
-              "
+              className="px-5 py-2 rounded-full text-sm capitalize bg-zinc-900 text-zinc-400 border border-zinc-700 transition-all duration-300 hover:bg-sky-400 hover:text-black hover:border-sky-400"
             >
               {cat}
             </button>
