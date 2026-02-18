@@ -7,7 +7,6 @@ import { ReactLenis } from "lenis/react";
 import Home from "./pages/Home";
 import CaseStudy from "./pages/CaseStudy";
 import { useEffect } from "react";
-import Projectspage from "./pages/Projectspage";
 
 
 // App.jsx
@@ -24,7 +23,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projectspage />} />
         <Route path="/projects/:slug" element={<CaseStudy />} />
       </Routes>
       <Footer />
