@@ -49,7 +49,7 @@ export default function Contact() {
         <div className="w-[600px] h-[600px] bg-sky-500/10 blur-3xl rounded-full mt-40" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-2">
 
         {/* HEADING */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">

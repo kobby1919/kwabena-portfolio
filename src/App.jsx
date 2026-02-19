@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import ContactPage from "./pages/Contact";
 import WorkPage from "./pages/Work";
 import useScrollReveal from "./hooks/useScrollReveal";
+import AboutSelf from "./pages/About";
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/projects/:slug" element={<CaseStudy />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/work" element={<WorkPage />} />
+        <Route path="about" element={<AboutSelf />} />
       </Routes>
       <Footer />
     </ReactLenis>
