@@ -66,9 +66,9 @@ export default function Work() {
               Selected projects showcasing my best work.
             </p>
           </div>
-          <a href="/projects" className="mt-4 md:mt-0 text-sky-400 hover:underline">
+          <Link to="/work" className="mt-4 md:mt-0 text-sky-400 hover:underline">
             View All Projects
-          </a>
+          </Link>
         </div>
 
         {/* Filter Buttons */}
@@ -108,7 +108,6 @@ export default function Work() {
           className="mt-16 flex justify-center"
         >
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 w-full max-w-2xl bg-zinc-800/30 backdrop-blur-xl border border-white/8 rounded-2xl px-10 py-8">
-
             <div className="text-center sm:text-left">
               <h3 className="text-white font-semibold text-xl tracking-tight">
                 Like what you see?
@@ -125,7 +124,6 @@ export default function Work() {
               {"Let's Connect"}
               <span className="material-symbols-rounded text-[15px]">arrow_forward</span>
             </Link>
-
           </div>
         </motion.div>
 
