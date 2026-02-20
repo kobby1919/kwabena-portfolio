@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
-import { ButtonPrimary, ButtonOutline } from "./Button";
-
+import { ButtonPrimary } from "./Button";
+import { Link } from "react-router-dom";
 
 const container = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -29,16 +29,26 @@ function Hero() {
       initial="hidden"
       animate="visible"
     >
-      {/* Background glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(700px,90vw)] h-[400px] bg-sky-500/8 blur-[120px] rounded-full" />
-        <div className="absolute top-1/4 left-1/4 w-[200px] h-[200px] bg-sky-400/5 blur-3xl rounded-full" />
-        <div className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] bg-sky-400/5 blur-3xl rounded-full" />
+      {/* Background glows — hidden on mobile to prevent GPU lag */}
+      <div className="absolute inset-0 pointer-events-none hidden sm:block">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full"
+          style={{
+            background: "rgba(14,165,233,0.06)",
+            filter: "blur(80px)",
+            willChange: "transform",
+          }}
+        />
       </div>
 
-      {/* Subtle grid overlay */}
+      {/* Subtle sky tint on mobile instead of blur */}
+      <div className="absolute inset-0 pointer-events-none sm:hidden"
+        style={{ background: "radial-gradient(ellipse at 50% 30%, rgba(14,165,233,0.04) 0%, transparent 70%)" }}
+      />
+
+      {/* Subtle grid overlay — hidden on mobile */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        className="absolute inset-0 pointer-events-none opacity-[0.025] hidden sm:block"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
@@ -51,8 +61,8 @@ function Hero() {
 
         {/* Badge */}
         <motion.div variants={fadeUp} className="flex justify-center mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-400/20 rounded-full backdrop-blur-sm">
-            <span className="w-2 h-2 bg-sky-400 rounded-full shadow-[0_0_6px_#38bdf8] animate-pulse shrink-0" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-400/20 rounded-full">
+            <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse shrink-0" />
             <span className="text-sky-300 text-xs sm:text-sm font-medium">
               Currently open to work
             </span>
@@ -63,7 +73,7 @@ function Hero() {
         <motion.h1
           variants={fadeUp}
           className="font-semibold tracking-tight leading-tight mb-5 sm:mb-6"
-          style={{ fontSize: "clamp(32px, 7vw, 72px)" }}
+          style={{ fontSize: "clamp(30px, 7vw, 72px)" }}
         >
           Building{" "}
           <span className="bg-gradient-to-r from-sky-400 to-sky-300/70 bg-clip-text text-transparent">
@@ -80,7 +90,7 @@ function Hero() {
         {/* Subtext */}
         <motion.p
           variants={fadeUp}
-          className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl sm:max-w-2xl mx-auto mb-8 sm:mb-10 px-2"
+          className="text-zinc-400 text-sm sm:text-lg leading-relaxed max-w-xl sm:max-w-2xl mx-auto mb-8 sm:mb-10 px-2"
         >
           {"I'm Samuel Kwabena Assan — a frontend-focused fullstack developer passionate about crafting clean, modern, and highly functional digital experiences."}
         </motion.p>
@@ -88,21 +98,22 @@ function Hero() {
         {/* Buttons */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-16"
         >
           <ButtonPrimary
             href="/files/Samuel-Kwabena-Assan-CV.pdf.pdf"
             target="_blank"
             label="Download CV"
             icon="download"
-            classes="w-full sm:w-auto justify-center hover:scale-[1.03] active:scale-[0.97] transition-transform"
+            classes="w-full sm:w-auto justify-center"
           />
-          <ButtonOutline
-            href="#work"
-            label="Explore my work"
-            icon="arrow_downward"
-            classes="w-full sm:w-auto justify-center hover:scale-[1.03] active:scale-[0.97] transition-transform"
-          />
+          <Link
+            to="/work"
+            className="btn btn-outline w-full sm:w-auto justify-center"
+          >
+            Explore my work
+            <span className="material-symbols-rounded floating-icon">arrow_forward</span>
+          </Link>
         </motion.div>
 
         {/* Tech stack pills */}
