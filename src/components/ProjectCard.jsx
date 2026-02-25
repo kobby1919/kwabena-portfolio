@@ -84,7 +84,7 @@ function ProjectCard({
                        bg-black/60 backdrop-blur-md rounded-full border border-white/10
                        hover:border-white/30 hover:bg-black/80 transition"
           >
-            <img src="/images/github.svg" alt="GitHub" className="w-4 h-4" />
+            <span className="material-symbols-rounded text-white text-sm">code</span>
           </a>
           <a
             href={live}
@@ -172,7 +172,7 @@ function ProjectCard({
                        bg-white/5 text-white/60 border border-white/8
                        hover:bg-white/10 hover:text-white/80 transition-all duration-300"
           >
-            <img src="/images/github.svg" alt="GitHub" className="w-4 h-4 opacity-70" />
+            <span className="material-symbols-rounded text-sm">code</span>
             Code
           </a>
         </div>
@@ -216,4 +216,3 @@ ProjectCard.propTypes = {
 };
 
 export default ProjectCard;
-
