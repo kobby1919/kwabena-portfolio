@@ -5,6 +5,19 @@ import ProjectCard from "../components/ProjectCard";
 
 const projects = [
   {
+    title: "Personal Portfolio",
+    description: "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
+    image: "/images/project-1.png",
+    tech: ["React", "Express", "API", "MongoDB", "NodeJS", "tailwindCSS"],
+    year: "2026",
+    type: "Web App",
+    status: "Completed",
+    slug: "personal-portfolio",
+    live: "https://junior-portfolio-kappa.vercel.app/",
+    github: "https://github.com/kobby1919/kwabena-portfolio",
+    category: "Full Stack",
+  },
+  {
     title: "School Management System",
     description: "A complete platform to manage students and teachers.",
     image: "/images/SMS.jpg",
@@ -17,19 +30,6 @@ const projects = [
     live: "https://your-live-link.com",
     github: "https://github.com/yourusername/project",
     category: "Full Stack",
-  },
-  {
-    title: "Music Streaming App",
-    description: "Modern music streaming platform with API integration.",
-    image: "/images/project-1.jpg",
-    tech: ["React", "Express", "API"],
-    year: "2026",
-    type: "Web App",
-    status: "Coming soon",
-    slug: "music-app",
-    live: "https://your-live-link.com",
-    github: "https://github.com/yourusername/project",
-    category: "Frontend",
   },
 ];
 
@@ -95,8 +95,8 @@ export default function WorkPage() {
           >
             {[
               { label: "Total Projects", value: projects.length },
+              { label: "Completed", value: projects.filter(p => p.status === "Completed").length },
               { label: "In Progress", value: projects.filter(p => p.status === "In-Progress").length },
-              { label: "Coming Soon", value: projects.filter(p => p.status === "Coming soon").length },
               { label: "Technologies Used", value: [...new Set(projects.flatMap(p => p.tech))].length },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col">
@@ -129,10 +129,10 @@ export default function WorkPage() {
             ))}
           </motion.div>
 
-          {/* Cards */}
+          {/* Cards — equal width grid */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col md:flex-row flex-wrap gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -149,7 +149,7 @@ export default function WorkPage() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="w-full text-center py-20 text-zinc-500"
+                className="col-span-full text-center py-20 text-zinc-500"
               >
                 <span className="material-symbols-rounded text-5xl mb-4 block">folder_off</span>
                 No projects in this category yet.

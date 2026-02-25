@@ -5,6 +5,20 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
+    title: "Personal Portfolio",
+    description: "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
+    image: "/images/project-1.png",
+    tech: ["React", "Express", "API", "MongoDB", "NodeJS", "tailwindCSS"],
+    year: "2026",
+    type: "Web App",
+    status: "Completed",
+    featured: true,
+    slug: "personal-portfolio",
+    live: "https://junior-portfolio-kappa.vercel.app/",
+    github: "https://github.com/kobby1919/kwabena-portfolio",
+    category: "Full Stack",
+  },
+  {
     title: "School Management System",
     description: "A complete platform to manage students and teachers.",
     image: "/images/SMS.jpg",
@@ -17,20 +31,7 @@ const projects = [
     live: "https://your-live-link.com",
     github: "https://github.com/yourusername/project",
     category: "Full Stack",
-  },
-  {
-    title: "Music Streaming App",
-    description: "Modern music streaming platform with API integration.",
-    image: "/images/project-1.jpg",
-    tech: ["React", "Express", "API"],
-    year: "2026",
-    type: "Web App",
-    status: "Coming soon",
-    slug: "music-app",
-    live: "https://your-live-link.com",
-    github: "https://github.com/yourusername/project",
-    category: "Frontend",
-  },
+  }, 
 ];
 
 export default function Work() {
@@ -84,8 +85,8 @@ export default function Work() {
           ))}
         </div>
 
-        {/* Cards */}
-        <div className="flex flex-col md:flex-row gap-8 justify-start">
+        {/* Cards — grid keeps all cards equal width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
