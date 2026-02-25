@@ -92,7 +92,7 @@ function Hero() {
           variants={fadeUp}
           className="text-zinc-400 text-sm sm:text-lg leading-relaxed max-w-xl sm:max-w-2xl mx-auto mb-8 sm:mb-10 px-2"
         >
-          {"I'm Samuel Kwabena Assan — a frontend-focused fullstack developer passionate about crafting clean, modern, and highly functional digital experiences."}
+          {"I'm Samuel Kwabena Assan — a Backend-focused fullstack developer passionate about crafting clean, modern, and highly functional digital experiences."}
         </motion.p>
 
         {/* Buttons */}
