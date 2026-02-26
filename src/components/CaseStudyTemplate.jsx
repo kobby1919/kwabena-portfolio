@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -21,6 +21,14 @@ export default function CaseStudyTemplate({ data }) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const { meta, overview, techStack, challenges, features, learnings, cta } = data;
 
@@ -45,8 +53,15 @@ export default function CaseStudyTemplate({ data }) {
 
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative h-[90vh] flex items-end overflow-hidden">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
-          <img src={meta.image} alt={meta.title} className="w-full h-full object-cover" />
+        <motion.div
+          style={{ y: isMobile ? 0 : heroY }}
+          className="absolute inset-0"
+        >
+          <img
+            src={meta.image}
+            alt={meta.title}
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/60 via-transparent to-transparent" />
         </motion.div>
