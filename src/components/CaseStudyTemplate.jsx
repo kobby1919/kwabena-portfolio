@@ -54,11 +54,11 @@ export default function CaseStudyTemplate({ data }) {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]
                         bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 container mx-auto px-6 pb-20">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 container mx-auto px-6 pb-12 pt-20 md:pt-0 md:pb-20">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full
                              bg-sky-400/10 border border-sky-400/20 text-sky-400
-                             text-xs tracking-widest uppercase mb-6">
+                             text-xs tracking-widest uppercase mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
               Case Study
             </span>
@@ -66,7 +66,7 @@ export default function CaseStudyTemplate({ data }) {
 
           <motion.h1
             variants={fadeUp} initial="hidden" animate="visible" custom={1}
-            className="text-5xl md:text-7xl font-bold leading-none tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6"
             style={{ fontFamily: "'Sora', sans-serif" }}
           >
             {meta.titleLine1}
@@ -81,14 +81,14 @@ export default function CaseStudyTemplate({ data }) {
 
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" custom={2}
-            className="text-white/60 text-lg max-w-xl mb-10 leading-relaxed"
+            className="text-white/60 text-base md:text-lg max-w-xl mb-8 leading-relaxed"
           >
             {meta.summary}
           </motion.p>
 
           <motion.div
             variants={fadeUp} initial="hidden" animate="visible" custom={3}
-            className="flex flex-wrap gap-6"
+            className="flex flex-wrap gap-4 md:gap-6"
           >
             {meta.stats.map((s, i) => (
               <div key={i} className="flex flex-col">
@@ -101,7 +101,7 @@ export default function CaseStudyTemplate({ data }) {
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="container mx-auto px-6 max-w-4xl py-24 space-y-32">
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl py-16 md:py-24 space-y-20 md:space-y-32">
 
         {/* ── OVERVIEW ── */}
         <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -229,24 +229,24 @@ export default function CaseStudyTemplate({ data }) {
                 key={i}
                 variants={fadeUp} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={i * 0.1}
-                className="group p-8 rounded-2xl border border-white/8 bg-white/2
+                className="group p-5 sm:p-8 rounded-2xl border border-white/8 bg-white/2
                            hover:border-white/12 hover:bg-white/4 transition-all duration-500"
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-4">
-                    <span className="text-4xl font-bold text-white/8 leading-none"
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl sm:text-4xl font-bold text-white/8 leading-none shrink-0"
                       style={{ fontFamily: "'Sora', sans-serif" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="text-lg font-semibold leading-snug">{c.title}</h3>
+                    <h3 className="text-base sm:text-lg font-semibold leading-snug">{c.title}</h3>
                   </div>
-                  <span className={`shrink-0 px-3 py-1 text-xs rounded-full
+                  <span className={`self-start shrink-0 px-3 py-1 text-xs rounded-full
                                    bg-${c.tagColor}-400/10 text-${c.tagColor}-400
                                    border border-${c.tagColor}-400/20`}>
                     {c.tag}
                   </span>
                 </div>
-                <div className="space-y-4 pl-16">
+                <div className="space-y-4 sm:pl-16 pl-0">
                   <ChallengeBlock icon="bug_report" label="The Problem" color="rose" text={c.problem} />
                   <ChallengeBlock icon="search" label="The Discovery" color="amber" text={c.discovery} />
                   <ChallengeBlock icon="check_circle" label="The Fix" color="emerald" text={c.solution} />
@@ -312,7 +312,7 @@ export default function CaseStudyTemplate({ data }) {
           className="text-center pb-12"
         >
           <div
-            className="relative p-12 rounded-3xl border border-white/8 overflow-hidden"
+            className="relative p-8 sm:p-12 rounded-3xl border border-white/8 overflow-hidden"
             style={{ background: "linear-gradient(135deg, rgba(56,189,248,0.05) 0%, rgba(255,255,255,0.02) 100%)" }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-transparent pointer-events-none" />
