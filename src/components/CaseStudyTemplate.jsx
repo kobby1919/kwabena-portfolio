@@ -11,11 +11,12 @@ const fadeUp = {
   }),
 };
 
-/**
- * CaseStudyTemplate — reusable layout for all project case studies.
- *
- * @param {object} data — the full case study config object (see TEMPLATE below)
- */
+// On mobile — skip all scroll animations, show content instantly
+const noAnim = {
+  hidden: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
+};
+
 export default function CaseStudyTemplate({ data }) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -32,8 +33,14 @@ export default function CaseStudyTemplate({ data }) {
 
   const { meta, overview, techStack, challenges, features, learnings, cta } = data;
 
+  // Desktop gets full animations, mobile gets instant renders
+  const anim = isMobile ? noAnim : fadeUp;
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className="min-h-screen bg-zinc-950 text-white"
       style={{ fontFamily: "'DM Sans', 'Sora', sans-serif" }}
     >
@@ -53,6 +60,7 @@ export default function CaseStudyTemplate({ data }) {
 
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative h-[90vh] flex items-end overflow-hidden">
+        {/* Disable parallax on mobile to prevent scroll lag */}
         <motion.div
           style={{ y: isMobile ? 0 : heroY }}
           className="absolute inset-0"
@@ -69,8 +77,12 @@ export default function CaseStudyTemplate({ data }) {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]
                         bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 container mx-auto px-6 pb-12 pt-20 md:pt-0 md:pb-20">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+        {/* Disable scroll-based opacity fade on mobile */}
+        <motion.div
+          style={{ opacity: isMobile ? 1 : heroOpacity }}
+          className="relative z-10 container mx-auto px-6 pb-12 pt-20 md:pt-0 md:pb-20"
+        >
+          <motion.div variants={anim} initial="hidden" animate="visible" custom={0}>
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full
                              bg-sky-400/10 border border-sky-400/20 text-sky-400
                              text-xs tracking-widest uppercase mb-5">
@@ -80,7 +92,7 @@ export default function CaseStudyTemplate({ data }) {
           </motion.div>
 
           <motion.h1
-            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            variants={anim} initial="hidden" animate="visible" custom={1}
             className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6"
             style={{ fontFamily: "'Sora', sans-serif" }}
           >
@@ -95,14 +107,14 @@ export default function CaseStudyTemplate({ data }) {
           </motion.h1>
 
           <motion.p
-            variants={fadeUp} initial="hidden" animate="visible" custom={2}
+            variants={anim} initial="hidden" animate="visible" custom={2}
             className="text-white/60 text-base md:text-lg max-w-xl mb-8 leading-relaxed"
           >
             {meta.summary}
           </motion.p>
 
           <motion.div
-            variants={fadeUp} initial="hidden" animate="visible" custom={3}
+            variants={anim} initial="hidden" animate="visible" custom={3}
             className="flex flex-wrap gap-4 md:gap-6"
           >
             {meta.stats.map((s, i) => (
@@ -119,7 +131,7 @@ export default function CaseStudyTemplate({ data }) {
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl py-16 md:py-24 space-y-20 md:space-y-32">
 
         {/* ── OVERVIEW ── */}
-        <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.section variants={anim} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <SectionLabel label="Overview" />
           <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-snug"
             style={{ fontFamily: "'Sora', sans-serif" }}>
@@ -144,7 +156,7 @@ export default function CaseStudyTemplate({ data }) {
             {overview.phases.map((item, i) => (
               <motion.div
                 key={i}
-                variants={fadeUp} initial="hidden" whileInView="visible"
+                variants={anim} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={i * 0.5}
                 className="relative"
               >
@@ -169,7 +181,7 @@ export default function CaseStudyTemplate({ data }) {
             {techStack.groups.map((group, gi) => (
               <motion.div
                 key={gi}
-                variants={fadeUp} initial="hidden" whileInView="visible"
+                variants={anim} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={gi * 0.2}
               >
                 <div className="flex items-center gap-3 mb-6">
@@ -182,7 +194,7 @@ export default function CaseStudyTemplate({ data }) {
                   {group.items.map((item, ii) => (
                     <motion.div
                       key={ii}
-                      variants={fadeUp} initial="hidden" whileInView="visible"
+                      variants={anim} initial="hidden" whileInView="visible"
                       viewport={{ once: true }} custom={ii * 0.1}
                       className="flex items-start gap-4 p-5 rounded-xl border border-white/6 bg-white/2
                                  hover:border-white/12 hover:bg-white/4 transition-all duration-300"
@@ -201,7 +213,7 @@ export default function CaseStudyTemplate({ data }) {
 
           {/* Architecture diagram */}
           <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={anim} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="mt-16 p-8 rounded-2xl border border-white/8 bg-white/2"
           >
             <h3 className="text-sm uppercase tracking-widest text-white/40 mb-8">Architecture</h3>
@@ -242,7 +254,7 @@ export default function CaseStudyTemplate({ data }) {
             {challenges.map((c, i) => (
               <motion.div
                 key={i}
-                variants={fadeUp} initial="hidden" whileInView="visible"
+                variants={anim} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={i * 0.1}
                 className="group p-5 sm:p-8 rounded-2xl border border-white/8 bg-white/2
                            hover:border-white/12 hover:bg-white/4 transition-all duration-500"
@@ -282,7 +294,7 @@ export default function CaseStudyTemplate({ data }) {
             {features.map((f, i) => (
               <motion.div
                 key={i}
-                variants={fadeUp} initial="hidden" whileInView="visible"
+                variants={anim} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={i * 0.1}
                 className="p-6 rounded-2xl border border-white/8 bg-white/2
                            hover:border-sky-400/20 hover:bg-sky-400/3
@@ -302,7 +314,7 @@ export default function CaseStudyTemplate({ data }) {
 
         {/* ── LEARNINGS ── */}
         <motion.section
-          variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          variants={anim} initial="hidden" whileInView="visible" viewport={{ once: true }}
         >
           <SectionLabel label="Reflection" />
           <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-snug"
@@ -323,7 +335,7 @@ export default function CaseStudyTemplate({ data }) {
 
         {/* ── CTA ── */}
         <motion.section
-          variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+          variants={anim} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="text-center pb-12"
         >
           <div
@@ -371,7 +383,7 @@ export default function CaseStudyTemplate({ data }) {
         </motion.section>
 
       </div>
-    </div>
+    </motion.div>
   );
 }
 
