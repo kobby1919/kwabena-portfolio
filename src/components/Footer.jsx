@@ -162,8 +162,18 @@ function Footer() {
 
         </div>
 
+        {/* Bible verse */}
+        <div className="mt-12 py-8 border-t border-white/6 flex flex-col items-center text-center gap-2">
+          <span className="material-symbols-rounded text-sky-400/40 text-2xl">menu_book</span>
+          <p className="text-zinc-500 text-sm italic max-w-lg leading-relaxed">
+            "Trust in the Lord with all your heart and lean not on your own understanding;
+            in all your ways submit to him, and he will make your paths straight."
+          </p>
+          <p className="text-zinc-600 text-xs">— Proverbs 3:5-6</p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-600">
+        <div className="pt-6 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-600">
           <p>&copy; 2026 Samuel Kwabena Assan. All rights reserved.</p>
           <p>Designed & built by Samuel Kwabena Assan</p>
         </div>
