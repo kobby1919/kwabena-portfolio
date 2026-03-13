@@ -8,10 +8,14 @@ export default function Review() {
   const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" && window.innerWidth <= 768
+    typeof window !== "undefined" && window.innerWidth <= 768,
   );
   const [modalOpen, setModalOpen] = useState(false);
-  const [newReview, setNewReview] = useState({ name: "", company: "", content: "" });
+  const [newReview, setNewReview] = useState({
+    name: "",
+    company: "",
+    content: "",
+  });
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -27,7 +31,8 @@ export default function Review() {
       } catch (err) {
         setError("Failed to load reviews.");
       } finally {
-        setLoading(false);``
+        setLoading(false);
+        ``;
       }
     };
     fetchReviews();
@@ -45,7 +50,7 @@ export default function Review() {
     if (reviews.length === 0) return;
     const interval = setInterval(
       () => setCurrentIndex((prev) => (prev + 1) % reviews.length),
-      5000
+      5000,
     );
     return () => clearInterval(interval);
   }, [reviews]);
@@ -97,24 +102,24 @@ export default function Review() {
       <div className="container mb-6 relative z-10">
         <h2 className="headline-2 text-white mb-2">Testimonials</h2>
         <p className="text-zinc-400 mb-10 max-w-[60ch]">
-          Hear from clients and colleagues about their experience working together.
-          Their feedback shows professionalism and quality in every project.
+          Hear from clients and colleagues about their experience working
+          together. Their feedback shows professionalism and quality in every
+          project.
         </p>
       </div>
 
       {/* Testimonial Card */}
       <div className="flex flex-col justify-center items-center overflow-hidden relative z-10 mt-10 gap-6">
-
         {loading && (
           <div className="flex items-center gap-2 text-zinc-400 text-sm">
-            <span className="material-symbols-rounded animate-spin text-sky-400">progress_activity</span>
+            <span className="material-symbols-rounded animate-spin text-sky-400">
+              progress_activity
+            </span>
             Loading reviews...
           </div>
         )}
 
-        {!loading && error && (
-          <p className="text-red-400 text-sm">{error}</p>
-        )}
+        {!loading && error && <p className="text-red-400 text-sm">{error}</p>}
 
         {!loading && reviews.length === 0 && !error && (
           <p className="text-zinc-500 text-sm">No reviews yet. Be the first!</p>
@@ -153,7 +158,7 @@ export default function Review() {
         {/* Share Experience Button */}
         <button
           onClick={() => setModalOpen(true)}
-          className="mt-4 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+          className="mt-4 flex items-center justify-center gap-2 px-6 py-3 text-sky-300 font-medium rounded-xl bg-sky-500/10 border border-sky-400/20 hover:bg-sky-500/20 hover:border-sky-400/40 transition-all duration-300"
         >
           <span className="material-symbols-rounded text-lg">share</span>
           <span>Share Your Experience</span>
@@ -191,7 +196,9 @@ export default function Review() {
 
             {successMsg ? (
               <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
-                <span className="material-symbols-rounded text-sky-400 text-5xl">check_circle</span>
+                <span className="material-symbols-rounded text-sky-400 text-5xl">
+                  check_circle
+                </span>
                 <p className="text-white font-medium">{successMsg}</p>
               </div>
             ) : (
@@ -201,21 +208,27 @@ export default function Review() {
                   placeholder="Your Name"
                   className="p-3 rounded-xl bg-zinc-800 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   value={newReview.name}
-                  onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                  onChange={(e) =>
+                    setNewReview({ ...newReview, name: e.target.value })
+                  }
                 />
                 <input
                   type="text"
                   placeholder="Company"
                   className="p-3 rounded-xl bg-zinc-800 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   value={newReview.company}
-                  onChange={(e) => setNewReview({ ...newReview, company: e.target.value })}
+                  onChange={(e) =>
+                    setNewReview({ ...newReview, company: e.target.value })
+                  }
                 />
                 <textarea
                   placeholder="Your Review"
                   className="p-3 rounded-xl bg-zinc-800 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400 resize-none"
                   rows={4}
                   value={newReview.content}
-                  onChange={(e) => setNewReview({ ...newReview, content: e.target.value })}
+                  onChange={(e) =>
+                    setNewReview({ ...newReview, content: e.target.value })
+                  }
                 />
 
                 {error && <p className="text-red-400 text-xs">{error}</p>}
@@ -227,13 +240,17 @@ export default function Review() {
                 >
                   {submitting ? (
                     <>
-                      <span className="material-symbols-rounded animate-spin text-sm">progress_activity</span>
+                      <span className="material-symbols-rounded animate-spin text-sm">
+                        progress_activity
+                      </span>
                       Submitting...
                     </>
                   ) : (
                     <>
                       <span>Submit</span>
-                      <span className="material-symbols-rounded text-sm">send</span>
+                      <span className="material-symbols-rounded text-sm">
+                        send
+                      </span>
                     </>
                   )}
                 </button>

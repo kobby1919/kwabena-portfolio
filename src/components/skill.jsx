@@ -150,8 +150,7 @@ function Skill() {
 
         <h2 className="headline-2 mb-4">Technical Expertise</h2>
         <p className="text-zinc-400 mb-10 max-w-[60ch]">
-          A categorized overview of my technical capabilities across frontend,
-          backend, and tooling.
+          I choose the right tools for every project. Here are some of the technologies I use to build scalable and high-performance applications.
         </p>
 
         <motion.div

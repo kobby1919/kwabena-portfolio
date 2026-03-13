@@ -64,7 +64,7 @@ export default function Work() {
           <div>
             <h2 className="headline-2">{"Projects I'm Proud Of"}</h2>
             <p className="text-zinc-400 mt-2 max-w-xl">
-              Selected projects showcasing my best work.
+              Featured projects that reflect my best work, engineering approach, and passion for building impactful applications.
             </p>
           </div>
           <Link to="/work" className="mt-4 md:mt-0 text-sky-400 hover:underline">
