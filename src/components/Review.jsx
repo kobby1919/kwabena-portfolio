@@ -27,7 +27,7 @@ export default function Review() {
       } catch (err) {
         setError("Failed to load reviews.");
       } finally {
-        setLoading(false);
+        setLoading(false);``
       }
     };
     fetchReviews();

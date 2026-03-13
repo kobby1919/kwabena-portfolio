@@ -12,7 +12,7 @@ export default {
       },
       fontFamily: {
         heading: ["Poppins", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        body: ["Sora", "sans-serif"],
       },
     },
   },

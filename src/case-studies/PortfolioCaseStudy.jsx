@@ -86,13 +86,6 @@ const data = {
       tag: "Deployment", tagColor: "sky",
     },
     {
-      title: "Render Cold Starts Causing UX Issues",
-      problem: "Render's free tier spins down after 15 minutes of inactivity. The first request takes 30–60 seconds, causing the reviews section to show an error state before data loads.",
-      discovery: "Free hosting has real trade-offs. The generic error message was alarming to users who didn't understand what was happening under the hood.",
-      solution: "Updated the error UI to show a friendly 'Reviews are waking up, refresh in a moment' message instead of a red error.",
-      tag: "UX", tagColor: "violet",
-    },
-    {
       title: "SPA Routing 404 on Page Refresh",
       problem: "Refreshing any route other than / on Vercel returned a 404. React Router handles routing client-side, but Vercel's server didn't know to serve index.html for all paths.",
       discovery: "Vercel treats every path as a file request by default. Since /projects/personal-portfolio doesn't exist as a file, it returned 404.",
