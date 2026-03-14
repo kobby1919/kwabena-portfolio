@@ -95,7 +95,7 @@ const data = {
   ],
 
   features: [
-    { icon: "person", title: "Dynamic About Page", desc: "Tabbed layout with My Story, Career Journey, Education, and Core Values. Animated stat bars, floating badge, and scroll-triggered reveals." },
+    { icon: "person", title: "Interactive About Section", desc: "An engaging About section that presents My Story, Career Journey, Education, and Core Values in a seamless flow, with subtle animations and scroll-based interactions." },
     { icon: "work", title: "Filterable Projects", desc: "Category filter system with smooth transitions. Each card shows tech stack, live demo and GitHub links, and navigates to a full case study." },
     { icon: "star", title: "Live Reviews System", desc: "Users submit reviews via a modal form. Data persists in MongoDB Atlas and is fetched via the Express API on every page load." },
     { icon: "code", title: "Case Study Pages", desc: "Each project has a dedicated case study route with problem statement, tech breakdown, challenges faced, and features walkthrough." },
@@ -115,7 +115,7 @@ const data = {
     sub: "I'm currently open to junior frontend and full-stack opportunities.",
     links: [
       { label: "View Live Site", href: "https://junior-portfolio-kappa.vercel.app/", icon: "open_in_new", external: true, primary: true },
-      { label: "View Source Code", href: "https://github.com/kobby1919/kwabena-portfolio", img: "/images/github.svg", external: true, primary: false },
+      { label: "View Source Code", href: "https://github.com/kobby1919/kwabena-portfolio", img: "/images/github_dark.svg", external: true, primary: false },
       { label: "Get In Touch", href: "/contact", icon: "mail", external: false },
     ],
   },
