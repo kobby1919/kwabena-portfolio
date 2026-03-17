@@ -178,7 +178,7 @@ export default function Contact() {
                 Email Me
               </a>
               <a
-                href="/files/Samuel-Kwabena-Assan-CV.pdf.pdf"
+                href="/files/Samuel_Kwabena_Assan_CV.pdf"
                 download
                 className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-zinc-700/40 border border-white/10 text-zinc-300 hover:bg-zinc-700/60 transition-all duration-300 text-sm font-medium"
               >

@@ -117,7 +117,7 @@ function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-16"
         >
           <ButtonPrimary
-            href="/files/Samuel-Kwabena-Assan-CV.pdf.pdf"
+            href="/files/Samuel_Kwabena_Assan_CV.pdf"
             target="_blank"
             label="Download CV"
             icon="download"
