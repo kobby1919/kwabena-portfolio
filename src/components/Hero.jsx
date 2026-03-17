@@ -59,14 +59,30 @@ function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
 
-        {/* Badge */}
-        <motion.div variants={fadeUp} className="flex justify-center mb-6 sm:mb-8">
+        {/* Badges */}
+        <motion.div variants={fadeUp} className="flex justify-center items-center gap-3 mb-6 sm:mb-8">
+
+          {/* Open to work — always visible */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-400/20 rounded-full">
             <span className="w-2 h-2 bg-sky-400 rounded-full animate-pulse shrink-0" />
             <span className="text-sky-300 text-xs sm:text-sm font-medium">
               Currently open to work
             </span>
           </div>
+
+          {/* Telegram — desktop only, same size as above */}
+          <a
+            href="https://t.me/JayPipz"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-[#229ED9]/10 border border-[#229ED9]/25 rounded-full hover:bg-[#229ED9]/20 hover:border-[#229ED9]/50 transition-all duration-300 group"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.8L15.11 15.96C15 16.5 14.67 16.63 14.21 16.37L11.96 14.72L10.88 15.76C10.76 15.88 10.65 15.98 10.41 15.98L10.57 13.69L14.84 9.85C15.02 9.69 14.8 9.6 14.56 9.76L9.27 13.08L7.05 12.39C6.52 12.22 6.51 11.86 7.16 11.6L16.01 8.17C16.45 8.01 16.84 8.27 16.64 8.8Z" fill="#229ED9"/>
+            </svg>
+            <span className="text-[#229ED9] text-xs sm:text-sm font-medium">Trading Community</span>
+          </a>
+
         </motion.div>
 
         {/* Heading */}
@@ -109,10 +125,12 @@ function Hero() {
           />
           <Link
             to="/work"
-            className="btn btn-outline w-full sm:w-auto justify-center"
+            className="btn btn-outline w-full sm:w-auto justify-center group"
           >
             Explore my work
-            <span className="material-symbols-rounded floating-icon">arrow_forward</span>
+            <span className="material-symbols-rounded transition-transform duration-300 group-hover:translate-x-1.5">
+              arrow_forward
+            </span>
           </Link>
         </motion.div>
 
