@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import PortfolioCaseStudy from "../case-studies/PortfolioCaseStudy";
+import BabaCoCaseStudy from "../case-studies/BabaCoCaseStudy";
 
 const caseStudies = {
   "personal-portfolio": <PortfolioCaseStudy />,
+  "cleaning-agency": <BabaCoCaseStudy />,
 };
 
 export default function CaseStudy() {
