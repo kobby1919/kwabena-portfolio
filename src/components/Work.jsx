@@ -25,7 +25,7 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "tailwindCSS", "API"],
     year: "2026",
     type: "Web App",
-    status: "In-Progress",
+    status: "Completed",
     featured: true,
     slug: "cleaning-agency",
     live: "https://cleaning-agency-pi.vercel.app/",
