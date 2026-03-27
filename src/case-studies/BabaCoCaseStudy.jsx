@@ -122,7 +122,7 @@ const data = {
     heading: "Want to see it live?",
     sub: "The full site is deployed and the booking system is live.",
     links: [
-      { label: "View Live Site",   href: "https://cleaning-agency-pi.vercel.app/", icon: "open_in_new", external: true,  primary: true },
+      { label: "View Live Site",   href: "https://baba-co-pi.vercel.app/", icon: "open_in_new", external: true,  primary: true },
       { label: "View Source Code", href: "https://github.com/kobby1919/cleaning-agency", img: "/images/github_dark.svg", external: true, primary: false },
       { label: "Get In Touch",     href: "/contact", icon: "mail", external: false },
     ],

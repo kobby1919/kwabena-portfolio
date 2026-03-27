@@ -28,7 +28,7 @@ const projects = [
     status: "Completed",
     featured: true,
     slug: "cleaning-agency",
-    live: "https://cleaning-agency-pi.vercel.app/",
+    live: "https://baba-co-pi.vercel.app/",
     github: "https://github.com/kobby1919/cleaning-agency",
     category: "Full Stack",
   }, 
