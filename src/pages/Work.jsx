@@ -21,7 +21,7 @@ const projects = [
     title: "Baba & Co Cleaning Agency",
     description: "This website showcases a professional cleaning agency offering reliable home and office cleaning services, easy booking, and customer-focused solutions.",
     image: "/images/project-2.png",
-    tech: ["React", "Node.js", "MongoDB", "tailwindCSS", "API"],
+    tech: ["React", "EmailJS", "VanillaCSS", "lenis", "Framer-Motion"],
     year: "2026",
     type: "Web App",
     status: "Completed",
