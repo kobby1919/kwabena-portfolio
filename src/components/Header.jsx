@@ -43,15 +43,15 @@ function Header() {
       <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
 
         {/* LOGO */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link to="/" className="flex items-center gap-0 shrink-0">
           <img
             src="/images/logo.svg"
-            width={44}
-            height={44}
+            width={560}
+            height={240}
             alt="Kwabena Junior"
-            className="opacity-90"
+            className="opacity-90 h-8 w-auto sm:h-9 md:h-9 object-contain object-left shrink-0"
           />
-          <span className="text-white font-semibold text-sm hidden sm:block">
+          <span className="text-white font-semibold text-sm hidden sm:block leading-none -ml-1.5">
             Mr. Junior
           </span>
         </Link>
