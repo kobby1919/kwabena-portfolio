@@ -6,7 +6,8 @@ import ProjectCard from "../components/ProjectCard";
 const projects = [
   {
     title: "Personal Portfolio",
-    description: "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
+    description:
+      "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
     image: "/images/project-1.png",
     tech: ["React", "Express", "API", "MongoDB", "NodeJS", "tailwindCSS"],
     year: "2026",
@@ -19,7 +20,8 @@ const projects = [
   },
   {
     title: "Baba & Co Cleaning Agency",
-    description: "This website showcases a professional cleaning agency offering reliable home and office cleaning services, easy booking, and customer-focused solutions.",
+    description:
+      "This website showcases a professional cleaning agency offering reliable home and office cleaning services, easy booking, and customer-focused solutions.",
     image: "/images/project-2.png",
     tech: ["React", "EmailJS", "VanillaCSS", "lenis", "Framer-Motion"],
     year: "2026",
@@ -29,6 +31,28 @@ const projects = [
     slug: "cleaning-agency",
     live: "https://baba-co-pi.vercel.app/",
     github: "https://github.com/kobby1919/cleaning-agency",
+    category: "Full Stack",
+  },
+  {
+    title: "SMS",
+    description:
+      "A modern school management system that streamlines academic scheduling, student data, and administrative tasks in one platform.",
+    image: "/images/project-3.png",
+    tech: [
+      "React",
+      "NextJS",
+      "TypeScript",
+      "Express",
+      "PostGres",
+      "tailwindCSS",
+    ],
+    year: "2026",
+    type: "Web App",
+    status: "In-Progress",
+    featured: true,
+    slug: "SMS",
+    live: "https://notavailabel/",
+    github: "https://github.com/kobby1919/SMS",
     category: "Full Stack",
   },
 ];
@@ -50,9 +74,7 @@ export default function WorkPage() {
   const [filter, setFilter] = useState("All");
 
   const filteredProjects =
-    filter === "All"
-      ? projects
-      : projects.filter((p) => p.category === filter);
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <motion.div
@@ -65,13 +87,14 @@ export default function WorkPage() {
       initial="hidden"
       animate="visible"
     >
-
       {/* ── HERO ── */}
       <section className="pt-24 pb-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div variants={fadeUp}>
             <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-400/20 rounded-full px-4 py-1.5 mb-6">
-              <span className="material-symbols-rounded text-sky-400 text-base">work</span>
+              <span className="material-symbols-rounded text-sky-400 text-base">
+                work
+              </span>
               <span className="text-sky-400 text-sm font-medium">My Work</span>
             </div>
 
@@ -83,8 +106,8 @@ export default function WorkPage() {
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">
-              A curated collection of projects that reflect my skills, growth, and passion
-              for building meaningful digital experiences.
+              A curated collection of projects that reflect my skills, growth,
+              and passion for building meaningful digital experiences.
             </p>
           </motion.div>
 
@@ -95,9 +118,19 @@ export default function WorkPage() {
           >
             {[
               { label: "Total Projects", value: projects.length },
-              { label: "Completed", value: projects.filter(p => p.status === "Completed").length },
-              { label: "In Progress", value: projects.filter(p => p.status === "In-Progress").length },
-              { label: "Technologies Used", value: [...new Set(projects.flatMap(p => p.tech))].length },
+              {
+                label: "Completed",
+                value: projects.filter((p) => p.status === "Completed").length,
+              },
+              {
+                label: "In Progress",
+                value: projects.filter((p) => p.status === "In-Progress")
+                  .length,
+              },
+              {
+                label: "Technologies Used",
+                value: [...new Set(projects.flatMap((p) => p.tech))].length,
+              },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col">
                 <span className="text-2xl font-bold text-white">{value}</span>
@@ -111,7 +144,6 @@ export default function WorkPage() {
       {/* ── PROJECTS ── */}
       <section className="py-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-
           {/* Filter Buttons */}
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mb-10">
             {["All", "Full Stack", "Frontend"].map((item) => (
@@ -151,12 +183,13 @@ export default function WorkPage() {
                 animate={{ opacity: 1 }}
                 className="col-span-full text-center py-20 text-zinc-500"
               >
-                <span className="material-symbols-rounded text-5xl mb-4 block">folder_off</span>
+                <span className="material-symbols-rounded text-5xl mb-4 block">
+                  folder_off
+                </span>
                 No projects in this category yet.
               </motion.div>
             )}
           </motion.div>
-
         </div>
       </section>
 
@@ -184,12 +217,13 @@ export default function WorkPage() {
               className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500/10 border border-sky-400/30 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400/50 transition-all duration-300 text-sm font-medium whitespace-nowrap"
             >
               {"Let's Connect"}
-              <span className="material-symbols-rounded text-[15px]">arrow_forward</span>
+              <span className="material-symbols-rounded text-[15px]">
+                arrow_forward
+              </span>
             </Link>
           </motion.div>
         </div>
       </section>
-
     </motion.div>
   );
 }

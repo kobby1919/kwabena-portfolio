@@ -6,7 +6,8 @@ import ProjectCard from "./ProjectCard";
 const projects = [
   {
     title: "Personal Portfolio",
-    description: "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
+    description:
+      "Modern personal portfolio showcasing my projects, skills, and experience, built with a focus on clean design, smooth interactions, and real-world full-stack functionality.",
     image: "/images/project-1.png",
     tech: ["React", "Express", "API", "MongoDB", "NodeJS", "tailwindCSS"],
     year: "2026",
@@ -20,7 +21,8 @@ const projects = [
   },
   {
     title: "Baba & Co Cleaning Agency",
-    description: "This website showcases a professional cleaning agency offering reliable home and office cleaning services, easy booking, and customer-focused solutions.",
+    description:
+      "This website showcases a professional cleaning agency offering reliable home and office cleaning services, easy booking, and customer-focused solutions.",
     image: "/images/project-2.png",
     tech: ["React", "EmailJS", "VanillaCSS", "lenis", "Framer-Motion"],
     year: "2026",
@@ -31,7 +33,22 @@ const projects = [
     live: "https://baba-co-pi.vercel.app/",
     github: "https://github.com/kobby1919/cleaning-agency",
     category: "Full Stack",
-  }, 
+  },
+  {
+    title: "SMS",
+    description:
+      "A modern school management system that streamlines academic scheduling, student data, and administrative tasks in one platform.",
+    image: "/images/project-3.png",
+    tech: ["React", "NextJS", "TypeScript", "Express", "PostGres", "tailwindCSS"],
+    year: "2026",
+    type: "Web App",
+    status: "In-Progress",
+    featured: true,
+    slug: "SMS",
+    live: "https://notavailabel/",
+    github: "https://github.com/kobby1919/SMS",
+    category: "Full Stack",
+  },
 ];
 
 export default function Work() {
@@ -58,16 +75,19 @@ export default function Work() {
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-zinc-900/80 to-transparent pointer-events-none" />
 
       <div className="container relative z-10">
-
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
           <div>
             <h2 className="headline-2">{"Projects I'm Proud Of"}</h2>
             <p className="text-zinc-400 mt-2 max-w-xl">
-              Featured projects that reflect my best work, engineering approach, and passion for building impactful applications.
+              Featured projects that reflect my best work, engineering approach,
+              and passion for building impactful applications.
             </p>
           </div>
-          <Link to="/work" className="mt-4 md:mt-0 text-sky-400 hover:underline">
+          <Link
+            to="/work"
+            className="mt-4 md:mt-0 text-sky-400 hover:underline"
+          >
             View All Projects
           </Link>
         </div>
@@ -123,11 +143,12 @@ export default function Work() {
               className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500/10 border border-sky-400/30 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400/50 transition-all duration-300 text-sm font-medium whitespace-nowrap"
             >
               {"Let's Connect"}
-              <span className="material-symbols-rounded text-[15px]">arrow_forward</span>
+              <span className="material-symbols-rounded text-[15px]">
+                arrow_forward
+              </span>
             </Link>
           </div>
         </motion.div>
-
       </div>
     </section>
   );
