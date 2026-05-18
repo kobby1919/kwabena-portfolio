@@ -35,7 +35,7 @@ const projects = [
     category: "Full Stack",
   },
   {
-    title: "SMS",
+    title: "EduJay",
     description:
       "A modern school management system that streamlines academic scheduling, student data, and administrative tasks in one platform.",
     image: "/images/project-3.png",
